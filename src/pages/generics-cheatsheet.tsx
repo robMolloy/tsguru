@@ -2,7 +2,7 @@ import { CodeBlock, Typography } from "@/components";
 import fs from "fs/promises";
 import { useState } from "react";
 export async function getStaticProps() {
-  const text = await fs.readFile("src/reference/tests.ts", "utf8");
+  const text = await fs.readFile("src/reference/generics-cheatsheet-reference-code.ts", "utf8");
 
   return { props: { text } };
 }
