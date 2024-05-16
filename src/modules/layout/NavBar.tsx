@@ -21,7 +21,7 @@ export const NavBar = (p: { onToggleClick: () => void }) => {
         </button>
       </div>
       <div className="hidden md:block">
-        <a className="btn btn-ghost text-xl">TS Guru</a>
+        <a className="btn btn-ghost text-xl">TS Gurus</a>
       </div>
       <div className="flex-1" />
       <div className="flex gap-4 pr-4">
