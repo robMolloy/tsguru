@@ -7,13 +7,6 @@ export type TCodeBlockProps = {
   language?: "typescript";
 };
 
-function escapeHtml(html: string) {
-  var text = document.createTextNode(html);
-  var div = document.createElement("div");
-  div.appendChild(text);
-  return div.innerHTML;
-}
-
 export const CodeBlock = ({ children, language = "typescript" }: TCodeBlockProps) => {
   const htmlCodeElmRef = useRef<HTMLElement>(null);
 
