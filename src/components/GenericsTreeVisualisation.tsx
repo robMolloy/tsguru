@@ -25,6 +25,7 @@ export const GenericsTreeVisualisation = (p: TGenericsTreeVisualisationProps) =>
 
   const highlighted = p.treeData.filter((item) => isHighlighted(item.xMin, item.xMax, item.y));
   const unhighlighted = p.treeData.filter((item) => !isHighlighted(item.xMin, item.xMax, item.y));
+  const selected = highlighted[0] as NonNullable<(typeof highlighted)[number]>;
 
   const [showIsASubsetOf, setShowIsASubsetOf] = useState(false);
 
@@ -50,7 +51,7 @@ export const GenericsTreeVisualisation = (p: TGenericsTreeVisualisationProps) =>
       <div className="collapse bg-base-200">
         <input type="checkbox" />
         <div className="collapse-title text-xl font-medium">
-          Click to show which types extend {highlighted[0].label} in a typescript playground
+          Click to show which types extend {selected.label} in a typescript playground
         </div>
         <div className="collapse-content">
           <Toggle
@@ -65,7 +66,7 @@ export const GenericsTreeVisualisation = (p: TGenericsTreeVisualisationProps) =>
                 (item, j) =>
                   `type T${j}${p.typeSuffix} = ${item.label} extends${
                     showIsASubsetOf ? " /* is a subset of */" : ""
-                  } ${highlighted[0].label}  ? true : false // true`
+                  } ${selected.label}  ? true : false // true`
               )
               .join("\n\n")}
           />
@@ -75,7 +76,7 @@ export const GenericsTreeVisualisation = (p: TGenericsTreeVisualisationProps) =>
       <div className="collapse bg-base-200">
         <input type="checkbox" />
         <div className="collapse-title text-xl font-medium">
-          Click to show which types do not extend {highlighted[0].label} in a typescript playground
+          Click to show which types do not extend {selected.label} in a typescript playground
         </div>
         <div className="collapse-content">
           <Toggle
@@ -90,7 +91,7 @@ export const GenericsTreeVisualisation = (p: TGenericsTreeVisualisationProps) =>
                 (item, j) =>
                   `type T${j}${p.typeSuffix}x = ${item.label} extends${
                     showIsASubsetOf ? " /* is a subset of */" : ""
-                  } ${highlighted[0].label} ? true : false // false`
+                  } ${selected.label} ? true : false // false`
               )
               .join("\n\n")}
           />

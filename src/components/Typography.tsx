@@ -5,5 +5,5 @@ export type TTypographyProps = {
 };
 
 export const Typography = (p: TTypographyProps) => {
-  return <div className="prose max-w-xxxl m-auto ">{p.children}</div>;
+  return <div className="prose max-w-xxxl mx-auto">{p.children}</div>;
 };

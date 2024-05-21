@@ -3,30 +3,52 @@ import { ThemeSelector } from "../themeSelector";
 
 export const SideMenu = (p: { show: boolean }) => {
   return (
-    <div className={`bg-base-200 h-screen block border-r ${p.show ? "" : "hidden"}`}>
+    <div
+      className={`bg-base-200 h-screen overflow-y-scroll block border-r ${p.show ? "" : "hidden"}`}
+    >
       <ul className="menu">
         <li>
           <Link href={"/"}>Home</Link>
         </li>
         <li>
-          <h2 className="menu-title">Articles</h2>
+          <Link href={"/services-overview"}>Services Overview</Link>
+        </li>
+        <li>
+          <h2>
+            <Link href={"/articles"}>Articles</Link>
+          </h2>
           <ul>
             <li>
-              <Link href={"/articles/no-infer-article.page"}>no-infer-article.page.tsx</Link>
+              <Link href={"/articles/data-consumption"}>data-consumption</Link>
             </li>
             <li>
-              <Link href={"/guides/type-predicates-article.page"}>
+              <Link href={"/articles/never-assert"}>never-assert.page.tsx</Link>
+            </li>
+            <li>
+              <Link href={"/articles/no-infer-article"}>no-infer-article.page.tsx</Link>
+            </li>
+            <li>
+              <Link href={"/articles/no-unchecked-indexed-access"}>
+                no-unchecked-indexed-access.page.tsx
+              </Link>
+            </li>
+            <li>
+              <Link href={"/articles/type-predicates-article"}>
                 type-predicates-article.page.tsx
+              </Link>
+            </li>
+            <li>
+              <Link href={"/articles/write-better-not-worse-code"}>
+                write-better-not-worse-code.page.page.tsx
               </Link>
             </li>
           </ul>
         </li>
         <li>
-          <h2 className="menu-title">Guides</h2>
+          <h2>
+            <Link href={"/guides"}>Guides</Link>
+          </h2>
           <ul>
-            <li>
-              <Link href={"/guides/intro-to-generics-guide"}>intro-to-generics-guide</Link>
-            </li>
             <li>
               <Link href={"/guides/generics-conditionals-cheatsheet"}>
                 Conditional Generics Cheatsheet
@@ -37,24 +59,77 @@ export const SideMenu = (p: { show: boolean }) => {
                 Conditional Generics Visualised
               </Link>
             </li>
-          </ul>
-        </li>
-        <li>
-          <h2 className="menu-title">Services</h2>
-          <ul>
             <li>
-              <Link href={""}>Service1</Link>
+              <Link href={"/guides/intro-to-generics-guide"}>intro-to-generics-guide</Link>
             </li>
-          </ul>
-        </li>
-        <li>
-          <h2 className="menu-title">Recommendations</h2>
-          <ul>
             <li>
-              <Link href={"/recommendations/data-consumption-recommendation"}>
-                data-consumption-recommendation
+              <Link href={"/guides/name-your-data-types-well"}>name-your-data-types-well</Link>
+            </li>
+            <li>
+              <Link href={"/guides/smart-dumb-tight-ui-components"}>
+                smart-dumb-tight-ui-components.page
               </Link>
             </li>
+            <li>
+              <Link href={"/guides/the-magic-of-discriminated-unions"}>
+                the-magic-of-discriminated-unions
+              </Link>
+            </li>
+            <li>
+              <Link href={"/guides/the-magic-of-zod"}>the-magic-of-zod.page</Link>
+            </li>
+            <li>
+              <Link href={"/guidestype-inference-guide"}>type-inference-guide</Link>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h2>
+            <Link href={"/services"}>Services</Link>
+          </h2>
+          <ul>
+            <li>
+              <Link href="/services/advise-service">advise-service</Link>
+            </li>
+
+            <li>
+              <Link href="/services/audit-service">audit-service</Link>
+            </li>
+
+            <li>
+              <Link href="/services/build-service">build-service</Link>
+            </li>
+
+            <li>
+              <Link href="/services/contribute-service">contribut-service</Link>
+            </li>
+
+            <li>
+              <Link href="/services/guide-service">guide-service</Link>
+            </li>
+
+            <li>
+              <Link href="/services/implement-service">implement-service</Link>
+            </li>
+
+            <li>
+              <Link href="/services/maintain-service">maintain-service</Link>
+            </li>
+
+            <li>
+              <Link href="/services/resources-and-play-service">resources-and-pla-service</Link>
+            </li>
+
+            <li>
+              <Link href="/services/suggest-service">sugges-service</Link>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h2>
+            <Link href={"/recommendations"}>Recommendations</Link>
+          </h2>
+          <ul>
             <li>
               <Link href={"/recommendations/developer-workflow"}>developer-workflow</Link>
             </li>
@@ -72,30 +147,6 @@ export const SideMenu = (p: { show: boolean }) => {
               <Link href={"/recommendations/tsconfig-recommendation"}>tsconfig-recommendation</Link>
             </li>
           </ul>
-        </li>
-        <li>
-          <h2 className="menu-title">Articles</h2>
-          <ul>
-            <li>
-              <Link href={""}>Article1</Link>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <Link href={"/our-recommendations"}>Our recommendations</Link>
-        </li>
-
-        <li>
-          <Link href={"/test1"}>test1</Link>
-        </li>
-        <li>
-          <Link href={"/test2"}>test2</Link>
-        </li>
-        <li>
-          <a>Item 2</a>
-        </li>
-        <li>
-          <a>Item 3</a>
         </li>
       </ul>
     </div>
