@@ -1,10 +1,8 @@
-import { CodeBlock } from "@/components";
+import { CodeBlock, Typography } from "@/components";
 
 export default function Page() {
   return (
-    <div className="prose max-w-xxxl">
-      <div>link out to run-time checking recommendation</div>
-
+    <Typography>
       <h1>Run-time checking</h1>
       <p>
         If there's one thing that TS Gurus are going to insist on it's run-time checking (in
@@ -76,6 +74,6 @@ const fetchData = async () => {
         Tadah!!! All the type safety and error checking in development, but without any of the
         performance cost in production.
       </p>
-    </div>
+    </Typography>
   );
 }
