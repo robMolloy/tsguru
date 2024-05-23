@@ -1,4 +1,4 @@
-import { GenericsTreeVisualisation } from "@/components";
+import { GenericsTreeVisualisation, Typography } from "@/components";
 
 const primitivesVisualisationTreeData = [
   { xMin: 0, xMax: 12, y: 1, label: "any" },
@@ -38,19 +38,23 @@ const arrayAndObjectsVisualisationTreeData = [
 export default function Page() {
   return (
     <div>
-      <div>
-        <GenericsTreeVisualisation
-          treeData={primitivesVisualisationTreeData}
-          typeSuffix="Primitive"
-        />
-        ;
-      </div>
-      <div>
-        <GenericsTreeVisualisation
-          treeData={arrayAndObjectsVisualisationTreeData}
-          typeSuffix="Object"
-        />
-      </div>
+      <Typography wide>
+        <h2>Primitives</h2>
+      </Typography>
+
+      <GenericsTreeVisualisation
+        treeData={primitivesVisualisationTreeData}
+        typeSuffix="Primitive"
+      />
+      <br />
+      <br />
+      <Typography wide>
+        <h2>Objects</h2>
+      </Typography>
+      <GenericsTreeVisualisation
+        treeData={arrayAndObjectsVisualisationTreeData}
+        typeSuffix="Object"
+      />
     </div>
   );
 }
