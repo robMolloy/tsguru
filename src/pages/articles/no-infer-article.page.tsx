@@ -5,7 +5,7 @@ export default function Page() {
     <Typography fullPage>
       <h1>No Infer</h1>
 
-      <h2>What problem does NoInfer solve</h2>
+      <h2>What problem does NoInfer solve?</h2>
 
       <p>
         Imagine you are writing a function that accepts an object as an argument with two key-value
