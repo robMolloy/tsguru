@@ -4,7 +4,7 @@ export default function Page() {
       <h1>Framework Recommendation</h1>
       <p>
         We can provide our services for any web framework, but it is important, especially in teams
-        that are getting up to speed with typescript that there are as few barriers as possible to
+        that are getting up to speed with TypeScript that there are as few barriers as possible to
         get a full understanding of TypeScript. With so many web frameworks available our clients
         often ask us to make a recommendation when starting a new project.
       </p>

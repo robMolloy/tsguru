@@ -51,7 +51,7 @@ export const GenericsTreeVisualisation = (p: TGenericsTreeVisualisationProps) =>
       <div className="collapse bg-base-200">
         <input type="checkbox" />
         <div className="collapse-title text-xl font-medium">
-          Click to show which types extend {selected.label} in a typescript playground
+          Click to show which types extend {selected.label} in a TypeScript playground
         </div>
         <div className="collapse-content">
           <Toggle

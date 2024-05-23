@@ -25,11 +25,11 @@ export default function Page() {
         feedback on any errors on your whole codebase. This is especially useful when working with
         data stores, where small changes at this level can proliferate through the whole project.
       </p>
-      <p>To use the above command you will need to install typescript globally with</p>
+      <p>To use the above command you will need to install TypeScript globally with</p>
       <CodeBlock>npm install -g typescript</CodeBlock>
       <p>
         but an easier way to do this to add it as a script in your package.json file. Assuming
-        typescript is already installed, just add the line
+        TypeScript is already installed, just add the line
       </p>
       <CodeBlock>"tsc:watch": "tsc --noEmit --watch"</CodeBlock>
       <p>within scripts of package.json. You can then run the command with</p>
