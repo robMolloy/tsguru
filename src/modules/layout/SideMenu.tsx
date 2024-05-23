@@ -17,7 +17,12 @@ const linksMap: TLinksMap = [
     label: "Articles",
     links: [
       { type: "link", href: "/no-infer-article", label: "NoInfer", c: true },
-      { type: "link", href: "/no-unchecked-indexed-access", label: "no-unchecked-indexed-access" },
+      {
+        type: "link",
+        href: "/no-unchecked-indexed-access",
+        label: "noUncheckedIndexedAccess",
+        c: true,
+      },
       { type: "link", href: "/type-predicates-article", label: "type-predicates-article" },
     ],
   },
