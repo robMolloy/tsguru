@@ -6,19 +6,18 @@ export default function Page() {
       <h1>No Infer</h1>
 
       <h2>What problem does NoInfer solve</h2>
-      {/*
-       */}
 
       <p>
-        Imagine you are writing a function that accepts an object as argument with two key-value
+        Imagine you are writing a function that accepts an object as an argument with two key-value
         pairs; allPossibleValues which is an array and the value which is an item within the array.
       </p>
 
-      <CodeEditor height={15}>{`function someFn(x: { 
+      <CodeEditor height={20}>{`function someFn(x: { 
   allPossibleValues: string[]; 
   value: string;
 }) {/*logic here*/}
 
+// Would be nice if this errors
 someFn({ allPossibleValues: ["hi", "bye", "cry"], value: "bonjour" });`}</CodeEditor>
 
       <p>It would be nice if the above code errors, but how do we make this happen?</p>
@@ -29,7 +28,7 @@ someFn({ allPossibleValues: ["hi", "bye", "cry"], value: "bonjour" });`}</CodeEd
         TypeScript to infer the type of value from allPossibleValues.
       </p>
 
-      <CodeEditor height={20}>{`function someFn1<T>(x: { 
+      <CodeEditor height={25}>{`function someFn1<T>(x: { 
   allPossibleValues: T[]; 
   value: T; 
 }) {/*logic here*/}
@@ -46,18 +45,20 @@ someFn1<"hi" | "bye" | "cry">({ allPossibleValues: ["hi", "bye", "cry"], value: 
         little confusing.
       </p>
       <CodeEditor height={20}>
-        {`function someFn1<T1 extends string, T2 extends T1>(x: {
+        {`function someFn2<T1 extends string, T2 extends T1>(x: {
   allPossibleValues: T1[];
   value: T2;
 }) {/*logic here*/}
-someFn1({ allPossibleValues: ["hi", "bye", "cry"], value: "bonjour" });`}
+
+// Errors but bad practice and could get particularly complex if more than two
+someFn2({ allPossibleValues: ["hi", "bye", "cry"], value: "bonjour" });`}
       </CodeEditor>
 
       <h2>The current solution explained</h2>
       <p>
-        Why can't TypeScript just infer the value from the first attempt? Put simply, if you use one
-        generic to type more than one value, TypeScript doesn't know which value to use for the
-        generic.
+        Why can't TypeScript just infer the value from the first generic attempt with someFn1? Put
+        simply, if you use one generic to type more than one value, TypeScript doesn't know which
+        value to use for the generic.
       </p>
       <p>
         This is explained clearly in the excellent "zustand" state management documentation, but to
@@ -73,16 +74,16 @@ someFn1({ allPossibleValues: ["hi", "bye", "cry"], value: "bonjour" });`}
 
       <h2>How does NoInfer solve this?</h2>
       <p>
-        No infer is a helpful new utility type released in TypeScript 5.4 that deals with this
-        common use-case and enables code to be written more succinctly and clearly, by telling the
-        compiler which generic to focus it's initial inference on, then subsequent generics are
-        inferred from the initial reference. Just follow the example below;
+        NoInfer is a helpful new utility type released in TypeScript 5.4 that deals with this common
+        use-case and enables code to be written more succinctly and clearly, by telling the compiler
+        which generic to focus it's initial inference on, then subsequent generics are inferred from
+        the initial reference. Just follow the example below;
       </p>
 
       <div className="hidden">
         <CodeEditor height={0}>{`type NoInfer<T> = T & { [K in keyof T]: T[K] };`}</CodeEditor>
       </div>
-      <CodeEditor height={20}>{`function someFn3<T1 extends string>(x: { 
+      <CodeEditor height={25}>{`function someFn3<T1 extends string>(x: { 
   allPossibleValues: T1[]; 
   value: NoInfer<T1> 
 }) {/*logic here*/}
