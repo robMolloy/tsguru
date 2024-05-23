@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Router from "next/router";
+import { useRouter } from "next/router";
 
 type TLinksMapLink = { type: "link"; href: string; label: string; c?: true };
 type TLinksMapLinkGroup = {
@@ -90,6 +90,9 @@ const linksMap: TLinksMap = [
 ] as const;
 
 export const SideMenu = (p: { show: boolean }) => {
+  const router = useRouter();
+  console.log(router);
+
   return (
     <div
       className={`bg-base-200 min-w-72 h-screen overflow-y-scroll block border-r ${
@@ -101,7 +104,7 @@ export const SideMenu = (p: { show: boolean }) => {
           if (item.type === "link")
             return (
               <li key={item.href}>
-                <Link href={item.href} className={Router.route === item.href ? "active" : ""}>
+                <Link href={item.href} className={router.route === item.href ? "active" : ""}>
                   {item.label} {item.c ? "!!!COMPLETE!!!" : ""}
                 </Link>
               </li>
@@ -114,7 +117,7 @@ export const SideMenu = (p: { show: boolean }) => {
                   <summary>
                     <Link
                       href={item.href}
-                      className={Router.route === `${item.href}` ? "active" : ""}
+                      className={router.route === `${item.href}` ? "active" : ""}
                     >
                       {item.label}
                     </Link>
@@ -124,7 +127,7 @@ export const SideMenu = (p: { show: boolean }) => {
                       <li key={`${item.href}${child.href}`} className="active">
                         <Link
                           href={`${item.href}${child.href}`}
-                          className={Router.route === `${item.href}${child.href}` ? "active" : ""}
+                          className={router.route === `${item.href}${child.href}` ? "active" : ""}
                         >
                           {child.label} {child.c ? "!!!COMPLETE!!!" : ""}
                         </Link>
