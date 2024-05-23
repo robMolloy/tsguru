@@ -58,7 +58,7 @@ const linksMap: TLinksMap = [
       {
         type: "link",
         href: "/run-time-checking",
-        label: "run-time-checking recommendation",
+        label: "run-time checking recommendation",
         c: true,
       },
       { type: "link", href: "/tsconfig", label: "tsconfig recommendation" },
