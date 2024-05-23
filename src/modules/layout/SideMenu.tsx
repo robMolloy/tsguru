@@ -16,7 +16,7 @@ const linksMap: TLinksMap = [
     href: "/articles",
     label: "Articles",
     links: [
-      { type: "link", href: "/no-infer-article", label: "NoInfer", c: true },
+      { type: "link", href: "/no-infer", label: "NoInfer", c: true },
       {
         type: "link",
         href: "/no-unchecked-indexed-access",
@@ -53,9 +53,14 @@ const linksMap: TLinksMap = [
     href: "/recommendations",
     label: "Recommendations",
     links: [
-      { type: "link", href: "/developer-workflow", label: "developer-workflow" },
+      { type: "link", href: "/development-workflow", label: "Development Workflow", c: true },
       { type: "link", href: "/framework", label: "framework recommendation" },
-      { type: "link", href: "/run-time-checking", label: "run-time-checking recommendation" },
+      {
+        type: "link",
+        href: "/run-time-checking",
+        label: "run-time-checking recommendation",
+        c: true,
+      },
       { type: "link", href: "/tsconfig", label: "tsconfig recommendation" },
     ],
   },
