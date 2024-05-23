@@ -1,9 +1,21 @@
 import { CodeBlock, Typography } from "@/components";
+import Link from "next/link";
 
 export default function Page() {
   return (
     <Typography>
       <h1>Run-time checking</h1>
+      <h2>Related articles</h2>
+
+      <p>
+        Following on from this you may want to read about how{" "}
+        <Link href="/guides/fetching-data-safely-react">
+          fetching data can be implemented in a FE framework like React
+        </Link>
+        .
+      </p>
+
+      <h2>Intro</h2>
       <p>
         If there's one thing that TS Gurus are going to insist on it's run-time checking (in
         development, at least). Let's show you why;
