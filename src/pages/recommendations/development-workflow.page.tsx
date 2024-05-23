@@ -3,13 +3,14 @@ import { CodeBlock } from "@/components";
 export default function Page() {
   return (
     <div className="prose max-w-xxxl mx-auto my-4">
-      <h1>The TS Compiler</h1>
-      <h2>Just a linter...(sometimes)</h2>
+      <h1>TS Development Workflow</h1>
+      <h2>Intro</h2>
       <p>
         Perhaps the one thing that people take longest to get their head around with TypeScript is
         that when the code is running (known as run-time) all the types are discarded and the code
         has been converted into JavaScript. This conversion is done by the TypeScript compiler.
       </p>
+      <h2>The TS Compiler is just a linter...(sometimes)</h2>
       <p>
         As well as converting TypeScript code into JavaScript, the TS compiler can act like a linter
         but with one major benefit - it understands data. This means that it can check your data is
@@ -52,6 +53,13 @@ export default function Page() {
 }
 `}
       </CodeBlock>
+      <h2>In summary</h2>
+      <p>
+        Once `"tsc:watch": "tsc --noEmit --watch"` is added to your package.json, you can simply run
+        `npm run tsc:watch` in your terminal from the root of your project to keep you informed of
+        any errors throughout the project. Effort should be made to keep this in a "found 0 errors"
+        state
+      </p>
     </div>
   );
 }
