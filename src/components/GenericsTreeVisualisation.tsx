@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CodeEditor, Toggle } from ".";
+import { CodeEditor, Toggle, Typography } from ".";
 
 export type TGenericsTreeVisualisationProps = {
   treeData: { xMin: number; xMax: number; y: number; label: string }[];
@@ -37,13 +37,13 @@ export const GenericsTreeVisualisation = (p: TGenericsTreeVisualisationProps) =>
             key={`${item.xMin}-${item.xMax}-${item.y}-tree`}
             onClick={() => handleClick(item.xMin, item.xMax, item.y)}
             style={{ gridColumn: `span ${item.xMax - item.xMin} / span ${item.xMax - item.xMin}` }}
-            className={`border-2 py-2 col-span-${item.xMax - item.xMin} ${getHighlightedClass(
+            className={`border-2 col-span-${item.xMax - item.xMin} ${getHighlightedClass(
               item.xMin,
               item.xMax,
               item.y
             )}`}
           >
-            <pre className="overflow-hidden">{item.label}</pre>
+            <pre className="overflow-hidden text-xs py-2">{item.label}</pre>
           </div>
         ))}
       </div>
