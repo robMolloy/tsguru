@@ -21,3 +21,19 @@ function someFn2<T1 extends string, T2 extends T1>(x: { allPossibleValues: T1[];
 }
 // @ts-expect-error
 someFn2({ allPossibleValues: ["hi", "bye", "cry"], value: "bonjour" });
+
+function someFn3<T1 extends string>(x: { allPossibleValues: T1[]; value: NoInfer<T1> }) {
+  /*logic here*/
+}
+// @ts-expect-error
+someFn3({ allPossibleValues: ["hi", "bye", "cry"], value: "bonjour" });
+
+function someFn4<T1 extends string>(x: {
+  allPossibleValues: T1[];
+  value: NoInfer<T1>;
+  value2: NoInfer<T1>;
+}) {
+  /*logic here*/
+}
+// @ts-expect-error
+someFn4({ allPossibleValues: ["hi", "bye", "cry"], value: "bonjour", value2: "olah" });
