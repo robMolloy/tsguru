@@ -23,7 +23,10 @@ export const CodeBlock = ({ children, language = "typescript" }: TCodeBlockProps
     <>
       <pre className="p-0 border-2 relative">
         <span className="absolute top-0 right-0">
-          <button className="btn btn-ghost" onClick={() => navigator.clipboard.writeText(children)}>
+          <button
+            className="btn btn-ghost bg-white opacity-70"
+            onClick={() => navigator.clipboard.writeText(children)}
+          >
             copy
           </button>
         </span>

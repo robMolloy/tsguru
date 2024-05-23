@@ -1,5 +1,76 @@
 import Link from "next/link";
-import { ThemeSelector } from "../themeSelector";
+
+type TLinksMapLink = { type: "link"; href: string; label: string; c?: true };
+type TLinksMapLinkGroup = {
+  type: "linkGroup";
+  href: string;
+  label: string;
+  links: TLinksMapLink[];
+};
+type TLinksMap = (TLinksMapLink | TLinksMapLinkGroup)[];
+const linksMap: TLinksMap = [
+  { type: "link", href: "/", label: "Home" },
+  { type: "link", href: "/services-overview", label: "Services Overview" },
+  {
+    type: "linkGroup",
+    href: "/articles",
+    label: "Articles",
+    links: [
+      { type: "link", href: "/no-infer-article", label: "NoInfer", c: true },
+      { type: "link", href: "/no-unchecked-indexed-access", label: "no-unchecked-indexed-access" },
+      { type: "link", href: "/type-predicates-article", label: "type-predicates-article" },
+    ],
+  },
+  {
+    type: "linkGroup",
+    href: "/guides",
+    label: "Guides",
+    links: [
+      { type: "link", href: "/data-consumption", label: "data-consumption" },
+      { type: "link", href: "/discriminated-unions", label: "discriminated-unions" },
+      { type: "link", href: "/generics-extend-explain", label: "generics-extend-explain" },
+      { type: "link", href: "/generics-extend-visual", label: "generics-extend-visual" },
+      { type: "link", href: "/infer-types-from-vars", label: "infer-types-from-vars" },
+      { type: "link", href: "/intro-to-generics", label: "intro-to-generics" },
+      { type: "link", href: "/name-your-data-types-well", label: "name-your-data-types-well" },
+      { type: "link", href: "/never-assert", label: "never-assert" },
+      { type: "link", href: "/safe-fetch-fe", label: "safe-fetch-fe" },
+      { type: "link", href: "/smart-dumb-tight-ui", label: "smart-dumb-tight-ui" },
+      { type: "link", href: "/tight-vs-loose-types", label: "tight-vs-loose-types" },
+      { type: "link", href: "/ts-encourages-better", label: "ts-encourages-better" },
+      { type: "link", href: "/type-inference", label: "type-inference" },
+      { type: "link", href: "/where-will-it-error", label: "where-will-it-error?" },
+      { type: "link", href: "/zod", label: "zod" },
+    ],
+  },
+  {
+    type: "linkGroup",
+    href: "/recommendations",
+    label: "Recommendations",
+    links: [
+      { type: "link", href: "/developer-workflow", label: "developer-workflow" },
+      { type: "link", href: "/framework", label: "framework recommendation" },
+      { type: "link", href: "/run-time-checking", label: "run-time-checking recommendation" },
+      { type: "link", href: "/tsconfig", label: "tsconfig recommendation" },
+    ],
+  },
+  {
+    type: "linkGroup",
+    href: "/services",
+    label: "Services",
+    links: [
+      { type: "link", href: "/advise-service", label: "advise-service" },
+      { type: "link", href: "/audit-service", label: "audit-service" },
+      { type: "link", href: "/build-service", label: "build-service" },
+      { type: "link", href: "/contribute-service", label: "contribute-service" },
+      { type: "link", href: "/guide-service", label: "guide-service" },
+      { type: "link", href: "/implement-service", label: "implement-service" },
+      { type: "link", href: "/maintain-service", label: "maintain-service" },
+      { type: "link", href: "/resources-and-play-service", label: "resources-and-play-service" },
+      { type: "link", href: "/suggest-service", label: "suggest-service" },
+    ],
+  },
+] as const;
 
 export const SideMenu = (p: { show: boolean }) => {
   return (
@@ -9,157 +80,36 @@ export const SideMenu = (p: { show: boolean }) => {
       }`}
     >
       <ul className="menu">
-        <li>
-          <Link href={"/"}>Home</Link>
-        </li>
-        <li>
-          <Link href={"/services-overview"}>Services Overview</Link>
-        </li>
-        <li>
-          <details open>
-            <summary>
-              <Link href={"/articles"}>Articles</Link>
-            </summary>
-            <ul>
-              <li>
-                <Link href={"/articles/no-infer-article"}>no-infer-article.page.tsx</Link>
-              </li>
-              <li>
-                <Link href={"/articles/no-unchecked-indexed-access"}>
-                  no-unchecked-indexed-access.page.tsx
+        {linksMap.map((item) => {
+          if (item.type === "link")
+            return (
+              <li key={item.href}>
+                <Link href={item.href}>
+                  {item.label} {item.c ? "!!!COMPLETE!!!" : ""}
                 </Link>
               </li>
-              <li>
-                <Link href={"/articles/type-predicates-article"}>
-                  type-predicates-article.page.tsx
-                </Link>
-              </li>
-            </ul>
-          </details>
-        </li>
-        <li>
-          <details open>
-            <summary>
-              <Link href={"/guides"}>Guides</Link>
-            </summary>
-            <ul>
-              <li>
-                <Link href={"/guides/data-consumption"}>data-consumption</Link>
-              </li>
-              <li>
-                <Link href={"/guides/generics-conditionals-cheatsheet"}>
-                  generics-conditionals-cheatsheet
-                </Link>
-              </li>
-              <li>
-                <Link href={"/guides/generics-conditionals-visualised"}>
-                  generics-conditionals-visualised
-                </Link>
-              </li>
-              <li>
-                <Link href={"/guides/intro-to-generics-guide"}>intro-to-generics-guide</Link>
-              </li>
-              <li>
-                <Link href={"/guides/name-your-data-types-well"}>name-your-data-types-well</Link>
-              </li>
-              <li>
-                <Link href={"/guides/never-assert"}>never-assert.page.tsx</Link>
-              </li>
-              <li>
-                <Link href={"/guides/smart-dumb-tight-ui-components"}>
-                  smart-dumb-tight-ui-components.page
-                </Link>
-              </li>
-              <li>
-                <Link href={"/guides/the-magic-of-discriminated-unions"}>
-                  the-magic-of-discriminated-unions
-                </Link>
-              </li>
-              <li>
-                <Link href={"/guides/the-magic-of-zod"}>the-magic-of-zod.page</Link>
-              </li>
-              <li>
-                <Link href={"/guides/type-inference-guide"}>type-inference-guide</Link>
-              </li>
-              <li>
-                <Link href={"/guides/write-better-not-worse-code"}>
-                  write-better-not-worse-code.page.page.tsx
-                </Link>
-              </li>
-            </ul>
-          </details>
-        </li>
-        <li>
-          <details open>
-            <summary>
-              <Link href={"/services"}>Services</Link>
-            </summary>
-            <ul>
-              <li>
-                <Link href="/services/advise-service">advise-service</Link>
-              </li>
+            );
 
-              <li>
-                <Link href="/services/audit-service">audit-service</Link>
+          if (item.type === "linkGroup")
+            return (
+              <li key={item.href}>
+                <details open>
+                  <summary>
+                    <Link href={item.href}>{item.label}</Link>
+                  </summary>
+                  <ul>
+                    {item.links.map((child) => (
+                      <li key={`${item.href}${child.href}`}>
+                        <Link href={`${item.href}${child.href}`}>
+                          {child.label} {child.c ? "!!!COMPLETE!!!" : ""}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
               </li>
-
-              <li>
-                <Link href="/services/build-service">build-service</Link>
-              </li>
-
-              <li>
-                <Link href="/services/contribute-service">contribut-service</Link>
-              </li>
-
-              <li>
-                <Link href="/services/guide-service">guide-service</Link>
-              </li>
-
-              <li>
-                <Link href="/services/implement-service">implement-service</Link>
-              </li>
-
-              <li>
-                <Link href="/services/maintain-service">maintain-service</Link>
-              </li>
-
-              <li>
-                <Link href="/services/resources-and-play-service">resources-and-pla-service</Link>
-              </li>
-
-              <li>
-                <Link href="/services/suggest-service">sugges-service</Link>
-              </li>
-            </ul>
-          </details>
-        </li>
-        <li>
-          <details open>
-            <summary>
-              <Link href={"/recommendations"}>Recommendations</Link>
-            </summary>
-            <ul>
-              <li>
-                <Link href={"/recommendations/developer-workflow"}>developer-workflow</Link>
-              </li>
-              <li>
-                <Link href={"/recommendations/framework-recommendation"}>
-                  framework-recommendation
-                </Link>
-              </li>
-              <li>
-                <Link href={"/recommendations/run-time-checking-recommendation"}>
-                  run-time-checking-recommendation
-                </Link>
-              </li>
-              <li>
-                <Link href={"/recommendations/tsconfig-recommendation"}>
-                  tsconfig-recommendation
-                </Link>
-              </li>
-            </ul>
-          </details>
-        </li>
+            );
+        })}
       </ul>
     </div>
   );
