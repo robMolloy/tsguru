@@ -32,6 +32,7 @@ const linksMap: TLinksMap = [
     href: "/guides",
     label: "Guides",
     links: [
+      { type: "link", href: "/any-vs-unknown", label: "Any vs Unknown", c: true },
       { type: "link", href: "/certainty-boundary", label: "certainty-boundary" },
       {
         type: "link",
@@ -78,7 +79,7 @@ const linksMap: TLinksMap = [
         label: "Checking at run-time recommendation",
         c: true,
       },
-      { type: "link", href: "/tsconfig", label: "tsconfig Recommendation" },
+      { type: "link", href: "/tsconfig", label: "tsconfig Recommendation", c: true },
     ],
   },
   {
