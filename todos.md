@@ -1,4 +1,2 @@
 - TODO: next article: http://localhost:3000/guides/fetching-data-safely-react
 - TODO: next article: http://localhost:3000/recommendations/tsconfig
-- TODO: next article: http://localhost:3000/guides/generics-extend-explain
-- TODO: next article: http://localhost:3000/guides/generics-extend-visual
