@@ -24,7 +24,12 @@ const linksMap: TLinksMap = [
         label: "tsconfig: noUncheckedIndexedAccess",
         c: true,
       },
-      { type: "link", href: "/type-predicates-article", label: "type-predicates-article" },
+      {
+        type: "link",
+        href: "/type-narrowing-and-predicates",
+        label: "type-narrowing-and-predicates",
+        c: true,
+      },
     ],
   },
   {
