@@ -1,4 +1,5 @@
-import { GenericsTreeVisualisation, Typography } from "@/components";
+import { ConditionalTypesTreeVisualisation, Typography } from "@/components";
+import Link from "next/link";
 
 const primitivesVisualisationTreeData = [
   { xMin: 0, xMax: 12, y: 1, label: "any" },
@@ -8,9 +9,9 @@ const primitivesVisualisationTreeData = [
   { xMin: 8, xMax: 12, y: 2, label: "boolean" },
 
   { xMin: 0, xMax: 2, y: 3, label: "10" },
-  { xMin: 2, xMax: 4, y: 3, label: "3 | 8 | 5" },
+  { xMin: 2, xMax: 4, y: 3, label: "3 | 8" },
   { xMin: 4, xMax: 6, y: 3, label: `"bonjour"` },
-  { xMin: 6, xMax: 8, y: 3, label: `"hi" | "bye" | "cry"` },
+  { xMin: 6, xMax: 8, y: 3, label: `"hi" | "bye"` },
   { xMin: 8, xMax: 10, y: 3, label: "true" },
   { xMin: 10, xMax: 12, y: 3, label: "false" },
 
@@ -38,23 +39,36 @@ const arrayAndObjectsVisualisationTreeData = [
 export default function Page() {
   return (
     <div>
-      <Typography wide>
-        <h2>Primitives</h2>
-      </Typography>
+      <Typography>
+        <h1>Conditional Types Visualised</h1>
 
-      <GenericsTreeVisualisation
-        treeData={primitivesVisualisationTreeData}
-        typeSuffix="Primitive"
-      />
-      <br />
-      <br />
-      <Typography wide>
+        <h2>Intro</h2>
+
+        <p>
+          The following visualised tables give an interactive way of exploring conditional types.
+          Click on each item and the highlighted items below "extends" (or is a subset of) the top
+          item.
+        </p>
+
+        <p>
+          For an alternative explanation read through{" "}
+          <Link href="conditional-types-explained">Conditional Types Explained</Link> or read
+          through the TypeScript docs{" "}
+          <a href="https://www.typescriptlang.org/docs/handbook/2/conditional-types.html">here</a>.
+        </p>
+
+        <h2>Primitives</h2>
+
+        <ConditionalTypesTreeVisualisation
+          treeData={primitivesVisualisationTreeData}
+          typeSuffix="Primitive"
+        />
         <h2>Objects</h2>
+        <ConditionalTypesTreeVisualisation
+          treeData={arrayAndObjectsVisualisationTreeData}
+          typeSuffix="Object"
+        />
       </Typography>
-      <GenericsTreeVisualisation
-        treeData={arrayAndObjectsVisualisationTreeData}
-        typeSuffix="Object"
-      />
     </div>
   );
 }

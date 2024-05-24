@@ -33,11 +33,21 @@ const linksMap: TLinksMap = [
     label: "Guides",
     links: [
       { type: "link", href: "/certainty-boundary", label: "certainty-boundary" },
+      {
+        type: "link",
+        href: "/conditional-types-explained",
+        label: "Conditional Types Explained",
+        c: true,
+      },
+      {
+        type: "link",
+        href: "/conditional-types-visualised",
+        label: "Conditional Types Visualised",
+        c: true,
+      },
       { type: "link", href: "/data-consumption", label: "data-consumption" },
       { type: "link", href: "/discriminated-unions", label: "discriminated-unions" },
       { type: "link", href: "/fetching-data-safely-react", label: "Fetching Data Safely In React" },
-      { type: "link", href: "/generics-extend-explain", label: "generics-extend-explain" },
-      { type: "link", href: "/generics-extend-visual", label: "generics-extend-visual" },
       { type: "link", href: "/infer-types-from-vars", label: "infer-types-from-vars" },
       { type: "link", href: "/intro-to-generics", label: "intro-to-generics" },
       { type: "link", href: "/name-your-data-types-well", label: "name-your-data-types-well" },
@@ -91,7 +101,6 @@ const linksMap: TLinksMap = [
 
 export const SideMenu = (p: { show: boolean }) => {
   const router = useRouter();
-  console.log(router);
 
   return (
     <div
