@@ -1,8 +1,8 @@
-import { CodeBlock } from "@/components";
+import { CodeBlock, Typography } from "@/components";
 
 export default function Page() {
   return (
-    <div className="prose max-w-xxxl mx-auto my-4">
+    <Typography fullPage>
       <h1>TS Development Workflow</h1>
       <h2>Intro</h2>
       <p>
@@ -10,6 +10,7 @@ export default function Page() {
         that when the code is running (known as run-time) all the types are discarded and the code
         has been converted into JavaScript. This conversion is done by the TypeScript compiler.
       </p>
+
       <h2>The TS Compiler is just a linter...(sometimes)</h2>
       <p>
         As well as converting TypeScript code into JavaScript, the TS compiler can act like a linter
@@ -18,6 +19,7 @@ export default function Page() {
         will have a decent TypeScript setup out of the box, and this will provide errors in your
         whole project as you make changes.
       </p>
+
       <h2>Run the compiler whilst developing</h2>
       <p>
         One of the most likely ways to cause issues with when developing is by making changes in one
@@ -53,6 +55,7 @@ export default function Page() {
 }
 `}
       </CodeBlock>
+
       <h2>In summary</h2>
       <p>
         Once `"tsc:watch": "tsc --noEmit --watch"` is added to your package.json, you can simply run
@@ -60,6 +63,6 @@ export default function Page() {
         any errors throughout the project. Effort should be made to keep this in a "found 0 errors"
         state
       </p>
-    </div>
+    </Typography>
   );
 }
