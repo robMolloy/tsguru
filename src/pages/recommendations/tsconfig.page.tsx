@@ -57,6 +57,7 @@ export default function Page() {
         <Link href="/articles/no-unchecked-indexed-access">tsconfig: noUncheckedIndexedAccess</Link>
         .
       </p>
+
       <h2>"strict": true</h2>
       <p>
         <code>"strict": true</code> enforces a set of helpful and sensible rules. These are easy to
