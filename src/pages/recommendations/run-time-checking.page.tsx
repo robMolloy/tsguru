@@ -35,6 +35,8 @@ export default function Page() {
       };
     };
   };
+  
+  return data;
 };`}
       </CodeBlock>
       <p>But what happens if `breed` is sometimes an undefined, or age is a string?</p>

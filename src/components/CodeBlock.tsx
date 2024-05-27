@@ -4,7 +4,7 @@ import hljs from "highlight.js";
 
 export type TCodeBlockProps = {
   children: string;
-  language?: "typescript";
+  language?: "typescript" | "golang" | "go";
 };
 
 export const CodeBlock = ({ children, language = "typescript" }: TCodeBlockProps) => {
@@ -19,6 +19,7 @@ export const CodeBlock = ({ children, language = "typescript" }: TCodeBlockProps
       hljs.highlightElement(htmlCodeElmRef.current);
     }
   }, [escapedHtml]);
+
   return (
     <>
       <pre className="p-0 border-2 relative">

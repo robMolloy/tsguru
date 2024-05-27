@@ -40,7 +40,7 @@ const linksMap: TLinksMap = [
     label: "Guides",
     links: [
       { type: "link", href: "/any-vs-unknown", label: "Any vs Unknown", c },
-      { type: "link", href: "/async-equals-uncertainty", label: "Async Equals Uncertainty" },
+      { type: "link", href: "/async-equals-uncertainty", label: "Async Equals Uncertainty", c },
       { type: "link", href: "/categories-of-components", label: "Categories of Components", c },
       { type: "link", href: "/certainty-boundary", label: "certainty-boundary" },
       {
@@ -56,7 +56,7 @@ const linksMap: TLinksMap = [
         c,
       },
       { type: "link", href: "/discriminated-unions", label: "discriminated-unions" },
-      { type: "link", href: "/facade-pattern", label: "Facade Pattern" },
+      { type: "link", href: "/facade-pattern", label: "Facade Pattern", c },
       {
         type: "link",
         href: "/fetching-data-safely-react",
