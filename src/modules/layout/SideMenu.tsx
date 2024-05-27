@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+const c = true;
 
 type TLinksMapLink = { type: "link"; href: string; label: string; c?: true };
 type TLinksMapLinkGroup = {
@@ -17,18 +18,18 @@ const linksMap: TLinksMap = [
     href: "/articles",
     label: "Articles",
     links: [
-      { type: "link", href: "/no-infer", label: "NoInfer", c: true },
+      { type: "link", href: "/no-infer", label: "NoInfer", c },
       {
         type: "link",
         href: "/no-unchecked-indexed-access",
         label: "tsconfig: noUncheckedIndexedAccess",
-        c: true,
+        c,
       },
       {
         type: "link",
         href: "/type-narrowing-and-predicates",
         label: "type-narrowing-and-predicates",
-        c: true,
+        c,
       },
     ],
   },
@@ -37,31 +38,36 @@ const linksMap: TLinksMap = [
     href: "/guides",
     label: "Guides",
     links: [
-      { type: "link", href: "/any-vs-unknown", label: "Any vs Unknown", c: true },
+      { type: "link", href: "/any-vs-unknown", label: "Any vs Unknown", c },
       { type: "link", href: "/certainty-boundary", label: "certainty-boundary" },
       {
         type: "link",
         href: "/conditional-types-explained",
         label: "Conditional Types Explained",
-        c: true,
+        c,
       },
       {
         type: "link",
         href: "/conditional-types-visualised",
         label: "Conditional Types Visualised",
-        c: true,
+        c,
       },
       { type: "link", href: "/data-consumption", label: "data-consumption" },
       { type: "link", href: "/discriminated-unions", label: "discriminated-unions" },
-      { type: "link", href: "/fetching-data-safely-react", label: "Fetching Data Safely In React" },
+      {
+        type: "link",
+        href: "/fetching-data-safely-react",
+        label: "Fetching Data Safely In React",
+        c,
+      },
       { type: "link", href: "/infer-types-from-vars", label: "infer-types-from-vars" },
       { type: "link", href: "/intro-to-generics", label: "intro-to-generics" },
+      { type: "link", href: "/inference-and-utility-types", label: "Inference And Utility Types" },
       { type: "link", href: "/name-your-data-types-well", label: "name-your-data-types-well" },
-      { type: "link", href: "/never-assert", label: "never-assert" },
       { type: "link", href: "/smart-dumb-tight-ui", label: "smart-dumb-tight-ui" },
       { type: "link", href: "/tight-vs-loose-types", label: "tight-vs-loose-types" },
       { type: "link", href: "/ts-encourages-better", label: "ts-encourages-better" },
-      { type: "link", href: "/type-inference", label: "type-inference" },
+      { type: "link", href: "/type-assertion", label: "Type Assertion", c },
       { type: "link", href: "/where-will-it-error", label: "where-will-it-error?" },
       { type: "link", href: "/zod", label: "zod" },
     ],
@@ -75,16 +81,11 @@ const linksMap: TLinksMap = [
         type: "link",
         href: "/development-workflow",
         label: "Development Workflow Recommendation",
-        c: true,
+        c,
       },
-      { type: "link", href: "/framework", label: "Framework Recommendation", c: true },
-      {
-        type: "link",
-        href: "/run-time-checking",
-        label: "Checking at run-time recommendation",
-        c: true,
-      },
-      { type: "link", href: "/tsconfig", label: "tsconfig Recommendation", c: true },
+      { type: "link", href: "/framework", label: "Framework Recommendation", c },
+      { type: "link", href: "/run-time-checking", label: "Checking at run-time recommendation", c },
+      { type: "link", href: "/tsconfig", label: "tsconfig Recommendation", c },
     ],
   },
   {
