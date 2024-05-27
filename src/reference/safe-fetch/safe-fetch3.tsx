@@ -41,12 +41,14 @@ const useSafeTransactions = () => {
 
   return { safeTransactions };
 };
-export const SafeFetch = () => {
+export const TransactionsComponent = () => {
   const { safeTransactions } = useSafeTransactions();
 
   return (
     <div>
       {!safeTransactions && <div>loading...</div>}
+
+      {safeTransactions && !safeTransactions.success && <div>error</div>}
 
       {safeTransactions &&
         safeTransactions.success &&

@@ -44,7 +44,7 @@ const useTransactions = () => {
   return { transactions };
 };
 
-export const SafeFetch = () => {
+export const TransactionsComponent = () => {
   const { transactions } = useTransactions();
 
   return (

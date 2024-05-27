@@ -13,8 +13,7 @@ const fetchTransactions = async () => {
   const data = (await response.json()) as TTransactions;
   return data;
 };
-
-const useTransactions = () => {
+export const TransactionsComponent = () => {
   const [transactions, setTransactions] = useState<TTransactions | undefined>();
 
   const fetchAndSetTransactions = async () => {
@@ -25,12 +24,6 @@ const useTransactions = () => {
   useEffect(() => {
     fetchAndSetTransactions();
   }, []);
-
-  return { transactions };
-};
-export const SafeFetch = () => {
-  const { transactions } = useTransactions();
-
   return (
     <div>
       {!transactions && <div>loading...</div>}

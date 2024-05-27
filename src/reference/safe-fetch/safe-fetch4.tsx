@@ -33,22 +33,20 @@ const useTransactions = () => {
   return { transactions };
 };
 
-const getSafeTransaction = (x: unknown) => {
-  if (!x) return { status: "loading" } as const;
-  const parseResponse = transactionsSchema.safeParse(x);
-
-  if (parseResponse.success) return { status: "success", data: parseResponse.data } as const;
-  return { status: "error", error: parseResponse.error } as const;
-};
-
 const useSafeTransactions = () => {
   const { transactions } = useTransactions();
 
-  const safeTransactions = getSafeTransaction(transactions);
+  const safeTransactions = (() => {
+    if (!transactions) return { status: "loading" } as const;
+    const parseResponse = transactionsSchema.safeParse(transactions);
+
+    if (parseResponse.success) return { status: "success", data: parseResponse.data } as const;
+    return { status: "error", error: parseResponse.error } as const;
+  })();
 
   return { safeTransactions };
 };
-export const SafeFetch = () => {
+export const TransactionsComponent = () => {
   const { safeTransactions } = useSafeTransactions();
 
   return (
