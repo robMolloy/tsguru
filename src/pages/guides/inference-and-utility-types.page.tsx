@@ -2,7 +2,8 @@ import { Typography } from "@/components";
 
 export default function Page() {
   return (
-    <Typography>
+    <Typography fullPage>
+      <h1>Inference and Utility Types</h1>
       <p>
         The key to good TypeScript code is often to infer values instead of creating the types
         yourself. However, there are scenarios where you may not have direct access to the types.
