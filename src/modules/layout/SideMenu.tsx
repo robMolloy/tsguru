@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 const c = true;
+const sc = true;
 
-type TLinksMapLink = { type: "link"; href: string; label: string; c?: true };
+type TLinksMapLink = { type: "link"; href: string; label: string; c?: true; sc?: true };
 type TLinksMapLinkGroup = {
   type: "linkGroup";
   href: string;
@@ -39,7 +40,8 @@ const linksMap: TLinksMap = [
     label: "Guides",
     links: [
       { type: "link", href: "/any-vs-unknown", label: "Any vs Unknown", c },
-      { type: "link", href: "/categories-of-components", label: "Categories of Components" },
+      { type: "link", href: "/async-equals-uncertainty", label: "Async Equals Uncertainty" },
+      { type: "link", href: "/categories-of-components", label: "Categories of Components", c },
       { type: "link", href: "/certainty-boundary", label: "certainty-boundary" },
       {
         type: "link",
@@ -53,22 +55,31 @@ const linksMap: TLinksMap = [
         label: "Conditional Types Visualised",
         c,
       },
-      { type: "link", href: "/data-consumption", label: "data-consumption" },
       { type: "link", href: "/discriminated-unions", label: "discriminated-unions" },
+      { type: "link", href: "/facade-pattern", label: "Facade Pattern" },
       {
         type: "link",
         href: "/fetching-data-safely-react",
         label: "Fetching Data Safely In React",
         c,
       },
-      { type: "link", href: "/infer-types-from-vars", label: "infer-types-from-vars" },
+      {
+        type: "link",
+        href: "/infer-types-from-vars-and-functions",
+        label: "infer-types-from-vars-and-functions",
+      },
       { type: "link", href: "/intro-to-generics", label: "intro-to-generics" },
       { type: "link", href: "/inference-and-utility-types", label: "Inference And Utility Types" },
       { type: "link", href: "/name-your-data-types-well", label: "name-your-data-types-well" },
-      { type: "link", href: "/smart-dumb-tight-ui", label: "smart-dumb-tight-ui" },
       { type: "link", href: "/ts-encourages-better", label: "ts-encourages-better" },
       { type: "link", href: "/type-assertion", label: "Type Assertion", c },
       { type: "link", href: "/where-will-it-error", label: "where-will-it-error?" },
+      {
+        type: "link",
+        href: "/write-naive-components",
+        label: "write-naive-components",
+        c,
+      },
       { type: "link", href: "/zod", label: "zod" },
     ],
   },
@@ -145,7 +156,9 @@ export const SideMenu = (p: { show: boolean }) => {
                           href={`${item.href}${child.href}`}
                           className={router.route === `${item.href}${child.href}` ? "active" : ""}
                         >
-                          {child.label} {child.c ? "!!!COMPLETE!!!" : ""}
+                          {child.label}
+                          {child.c ? " !!!COMPLETE!!!" : ""}
+                          {child.sc ? " !!!SEMI-COMPLETE!!!" : ""}
                         </Link>
                       </li>
                     ))}
