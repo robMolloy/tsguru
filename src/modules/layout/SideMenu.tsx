@@ -39,6 +39,7 @@ const linksMap: TLinksMap = [
     label: "Guides",
     links: [
       { type: "link", href: "/any-vs-unknown", label: "Any vs Unknown", c },
+      { type: "link", href: "/categories-of-components", label: "Categories of Components" },
       { type: "link", href: "/certainty-boundary", label: "certainty-boundary" },
       {
         type: "link",
@@ -65,7 +66,6 @@ const linksMap: TLinksMap = [
       { type: "link", href: "/inference-and-utility-types", label: "Inference And Utility Types" },
       { type: "link", href: "/name-your-data-types-well", label: "name-your-data-types-well" },
       { type: "link", href: "/smart-dumb-tight-ui", label: "smart-dumb-tight-ui" },
-      { type: "link", href: "/tight-vs-loose-types", label: "tight-vs-loose-types" },
       { type: "link", href: "/ts-encourages-better", label: "ts-encourages-better" },
       { type: "link", href: "/type-assertion", label: "Type Assertion", c },
       { type: "link", href: "/where-will-it-error", label: "where-will-it-error?" },
