@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <Typography>
+    <Typography fullPage>
       <h1>Fetching Data Safely In React</h1>
       <h2>Pre-cursor</h2>
       <p>

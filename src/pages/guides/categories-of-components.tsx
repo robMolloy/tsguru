@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <Typography>
+    <Typography fullPage>
       <h1>Categories of Components</h1>
 
       <h2>Intro</h2>
@@ -177,6 +177,13 @@ export default function SearchPage() {
         This way of building components is fast, minimises cognitive overhead and provides all the
         right errors in all the right places when errors occur as a result of changes to the
         response from a data store.
+      </p>
+
+      <h2>One Exception</h2>
+      <p>
+        Perhaps one exception would be that if a smart component that uses "store1" it can use
+        another component that uses "store2". This comes down to developer-preference, but is worth
+        thinking about use-cases and discussing amongst the team before implementation.
       </p>
     </Typography>
   );

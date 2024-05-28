@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <Typography>
+    <Typography fullPage>
       <h1>Any vs Unknown</h1>
 
       <h2>Conclusion</h2>

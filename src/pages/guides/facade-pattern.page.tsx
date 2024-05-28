@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <Typography>
+    <Typography fullPage>
       <h1>The Facade Pattern</h1>
       <h2>What is it?</h2>
 
@@ -32,18 +32,32 @@ export default function Page() {
 
       <h2>Extra Context</h2>
       <p>
-        For an additional quick summary you Let's take the example from this great Fireship video,
-        which uses a heating system as the case-study.
+        For additional ideas about this topic, watch the example from this Fireship video or Jeff
+        Zhang's video on abstraction - both linked below.
       </p>
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/tv-_1er1mWI?si=bi5YD5lBRSX3VTtM&amp;start=294"
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
-      ></iframe>
+      <p className="flex justify-center">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/tv-_1er1mWI?si=bi5YD5lBRSX3VTtM&amp;start=294"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
+      </p>
+
+      <p className="flex justify-center">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/1c8epkTB4-U?si=AFpqU0_8fw2-j913"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
+      </p>
     </Typography>
   );
 }

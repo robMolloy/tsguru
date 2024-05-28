@@ -2,7 +2,7 @@ import { CodeBlock, CodeEditor, Typography } from "@/components";
 
 export default function Page() {
   return (
-    <Typography>
+    <Typography fullPage>
       <h1>tsconfig: noUncheckedIndexedAccess</h1>
       <h2>What problem does noUncheckedIndexedAccess solve?</h2>
       <p>

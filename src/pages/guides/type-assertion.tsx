@@ -2,7 +2,7 @@ import { Typography } from "@/components";
 
 export default function Page() {
   return (
-    <Typography>
+    <Typography fullPage>
       <h1>Type Assertion</h1>
 
       <h2>When should you assert the type?</h2>

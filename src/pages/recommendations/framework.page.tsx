@@ -3,7 +3,7 @@ import { Typography } from "@/components";
 export default function Page() {
   return (
     <>
-      <Typography>
+      <Typography fullPage>
         <h1>Framework Recommendation</h1>
 
         <h2>Focus on TypeScript Basics</h2>

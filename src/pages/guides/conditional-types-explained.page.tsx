@@ -14,7 +14,7 @@ export default function Page(p: TStaticProps) {
   const [showExtends, setShowExtends] = useState(true);
 
   return (
-    <Typography>
+    <Typography fullPage>
       <h1>Conditional Types</h1>
       <h2>The Basics</h2>
       <p>
