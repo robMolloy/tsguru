@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <Typography>
+    <Typography fullPage>
       <h1>tsconfig Recommendations</h1>
 
       <h2>Intro</h2>
