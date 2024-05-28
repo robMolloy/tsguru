@@ -42,7 +42,7 @@ const linksMap: TLinksMap = [
       { type: "link", href: "/any-vs-unknown", label: "Any vs Unknown", c },
       { type: "link", href: "/async-equals-uncertainty", label: "Async Equals Uncertainty", c },
       { type: "link", href: "/categories-of-components", label: "Categories of Components", c },
-      { type: "link", href: "/certainty-boundary", label: "certainty-boundary" },
+      { type: "link", href: "/certainty-boundary", label: "certainty-boundary", c },
       {
         type: "link",
         href: "/conditional-types-explained",
