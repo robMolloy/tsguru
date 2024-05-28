@@ -6,7 +6,7 @@ export default function Custom404() {
   return (
     <div className="flex h-[70vh] items-center justify-center text-center">
       <div className="text-center">
-        <Typography>
+        <Typography fullPage>
           <h1 className="mb-0" style={{ fontSize: "12rem" }}>
             404
           </h1>
