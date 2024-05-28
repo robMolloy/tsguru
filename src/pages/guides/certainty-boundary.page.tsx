@@ -53,7 +53,7 @@ export default function Page() {
         the developer sees fit. However, in this guide we will use a React app that uses a "Zustand"
         store to create the interface layer (as pictured in the diagram at the top of this article).
         Zustand is an alternative to Redux that many people find simpler to use and is more suitable
-        to getting the most out of Typescript.
+        to getting the most out of TypeScript.
       </p>
 
       <p>
