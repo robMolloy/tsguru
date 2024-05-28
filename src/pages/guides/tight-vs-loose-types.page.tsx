@@ -1,3 +1,9 @@
+import { Typography } from "@/components";
+
 export default function Page() {
-  return <div>tightest-correct-vs-broadest-flexible</div>;
+  return (
+    <Typography fullPage>
+      <div>tightest-correct-vs-broadest-flexible</div>
+    </Typography>
+  );
 }

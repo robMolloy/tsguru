@@ -1,3 +1,8 @@
+import { Typography } from "@/components";
+
 export default function Page() {
-  return <div>name your data well</div>;
+  return;
+  <Typography fullPage>
+    <div>name your data well</div>
+  </Typography>;
 }
