@@ -23,7 +23,7 @@ export default function Page() {
         (sometimes called Go), but we will cover an example to show the difference.
       </p>
 
-      <h2>TypeScript Example</h2>
+      <h2>TypeScript example</h2>
       <p>Take the following TypeScript code;</p>
       <CodeBlock>{`const makeApiCall = async (url: string) => {
   const response = await fetch(url);
@@ -31,7 +31,7 @@ export default function Page() {
   return data;
 };`}</CodeBlock>
 
-      <h2>Golang Example</h2>
+      <h2>Golang example</h2>
       <p>
         Now, let's do the same with in Golang. Some of the code is self-explanatory but there are
         some differences that are worth noting;

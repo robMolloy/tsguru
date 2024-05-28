@@ -30,7 +30,7 @@ export default function Page() {
         and maintainable but also adheres to general principles of clean architecture.
       </p>
 
-      <h2>Extra Context</h2>
+      <h2>Extra context</h2>
       <p>
         For additional ideas about this topic, watch the example from this Fireship video or Jeff
         Zhang's video on abstraction - both linked below.

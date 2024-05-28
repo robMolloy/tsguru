@@ -7,7 +7,7 @@ export default function Page() {
     <Typography fullPage>
       <h1>Certainty Boundary</h1>
 
-      <h2>Additional Reading</h2>
+      <h2>Additional reading</h2>
       <p>
         We have an article{" "}
         <Link href="/guides/fetching-data-safely-react">Fetching Data Safely In React</Link> which

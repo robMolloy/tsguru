@@ -6,7 +6,7 @@ export default function Page() {
       <Typography fullPage>
         <h1>Framework Recommendation</h1>
 
-        <h2>Focus on TypeScript Basics</h2>
+        <h2>Focus on TypeScript basics</h2>
         <p>
           We can provide our services for any web framework, but it is important, especially in
           teams that are getting up to speed with TypeScript that there are as few barriers as
@@ -14,7 +14,7 @@ export default function Page() {
           our clients often ask us to make a recommendation when starting a new project.
         </p>
 
-        <h2>React is the Safe Option</h2>
+        <h2>React is the safe option</h2>
         <p>
           At TS Gurus we recommend our clients use React/Next. There are different pros and cons to
           all web frameworks, and React/Next or ReactNative is definitely not perfect. However, it

@@ -11,7 +11,7 @@ export default function Page() {
         has been converted into JavaScript. This conversion is done by the TypeScript compiler.
       </p>
 
-      <h2>The TS Compiler is just a linter...(sometimes)</h2>
+      <h2>The TS compiler is just a linter...(sometimes)</h2>
       <p>
         As well as converting TypeScript code into JavaScript, the TS compiler can act like a linter
         but with one major benefit - it understands data. This means that it can check your data is

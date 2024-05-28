@@ -179,7 +179,7 @@ export default function SearchPage() {
         response from a data store.
       </p>
 
-      <h2>One Exception</h2>
+      <h2>One exception</h2>
       <p>
         Perhaps one exception would be that if a smart component that uses "store1" it can use
         another component that uses "store2". This comes down to developer-preference, but is worth

@@ -141,7 +141,7 @@ export const TransactionsComponent = () => {
   );
 };
 `}</CodeBlock>
-      <h2>Parsing the Data</h2>
+      <h2>Parsing the data</h2>
       <p>
         In the next example we are using schema-validation which provides run-time checks to ensure
         that the types are consistent with the values. We first declare the{" "}
@@ -220,7 +220,7 @@ export const TransactionsComponent = () => {
   );
 };`}</CodeBlock>
 
-      <h2>Readable UI States</h2>
+      <h2>Readable UI states</h2>
       <p>
         We have now made the code less likely to error, but we can make some slight changes to make
         the data states slightly more readable by using a <code>status</code> property why can be{" "}

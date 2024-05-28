@@ -55,7 +55,7 @@ const linksMap: TLinksMap = [
         label: "Conditional Types Visualised",
         c,
       },
-      { type: "link", href: "/discriminated-unions", label: "discriminated-unions" },
+      { type: "link", href: "/discriminated-unions", label: "Discriminated Unions", c },
       { type: "link", href: "/facade-pattern", label: "Facade Pattern", c },
       {
         type: "link",
