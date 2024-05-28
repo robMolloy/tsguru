@@ -69,6 +69,7 @@ const linksMap: TLinksMap = [
         label: "infer-types-from-vars-and-functions",
       },
       { type: "link", href: "/intro-to-generics", label: "intro-to-generics" },
+      { type: "link", href: "/intro-to-zod", label: "Intro to Zod", c },
       { type: "link", href: "/inference-and-utility-types", label: "Inference And Utility Types" },
       { type: "link", href: "/name-your-data-types-well", label: "name-your-data-types-well" },
       { type: "link", href: "/ts-encourages-better", label: "ts-encourages-better" },
@@ -80,7 +81,6 @@ const linksMap: TLinksMap = [
         label: "write-naive-components",
         c,
       },
-      { type: "link", href: "/zod", label: "zod" },
     ],
   },
   {
