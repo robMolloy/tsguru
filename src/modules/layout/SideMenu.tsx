@@ -71,7 +71,7 @@ const linksMap: TLinksMap = [
       { type: "link", href: "/intro-to-generics", label: "intro-to-generics" },
       { type: "link", href: "/intro-to-zod", label: "Intro to Zod", c },
       { type: "link", href: "/inference-and-utility-types", label: "Inference And Utility Types" },
-      { type: "link", href: "/name-your-data-types-well", label: "name-your-data-types-well" },
+      { type: "link", href: "/well-named-types", label: "Well Named Types" },
       { type: "link", href: "/ts-encourages-better", label: "ts-encourages-better" },
       { type: "link", href: "/type-assertion", label: "Type Assertion", c },
       { type: "link", href: "/where-will-it-error", label: "where-will-it-error?" },
