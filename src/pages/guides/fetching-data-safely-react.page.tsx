@@ -315,7 +315,7 @@ export const TransactionsComponent = () => {
       <ul>
         <li>Create a custom hook that on render fetches data</li>
         <li>Fetch data onMount</li>
-        <li>Parse that data through a schema validator such as zod</li>
+        <li>Parse that data through a schema validator such as Zod</li>
         <li>Manipulate the return such that there is a status key for each return</li>
         <li>Build a UI from the data returned in the hook</li>
       </ul>
