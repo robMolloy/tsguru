@@ -132,8 +132,8 @@ const useBearStore = create<TBearState>()((set, get) => ({
 };
 `}</CodeBlock>
       <p>
-        Remember, the certainty boundary is a concept to enable developers to use data, without
-        second-guessing whether or not the data conforms to it's type. This is just one
+        Remember, the certainty boundary is a concept to enable developers to use data effectively,
+        without second-guessing whether or not the data conforms to it's type. This is just one
         implementation but let us know if you use it in a different way.
       </p>
     </Typography>
