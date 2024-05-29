@@ -256,7 +256,7 @@ type TPocketbaseDb = typeof varThatIsNeverUsed;`}</CodeBlock>
 
 type TSafePetData = Awaited<ReturnType<typeof fetchSafePetData>>;
 type TSafePetDataSuccess = Extract<TSafePetData, { success: true }>;
-type TPetKind = TSafePetDataSuccess['kind'];`}</CodeBlock>
+type TPetKind = TSafePetDataSuccess['kind']; // "cat" | "dog" `}</CodeBlock>
 
       <h2>Summary</h2>
       <p>
