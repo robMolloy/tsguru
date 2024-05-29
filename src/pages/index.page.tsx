@@ -1,27 +1,27 @@
-import { Hero, Typography } from "@/components";
+import { Typography } from "@/components";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 export default function Page() {
-  const [state, setState] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setState(true);
-    }, 1000);
-  }, []);
   return (
     <div>
-      <Hero className="py-32">
-        <div className="prose">
-          <h1 className="mt-0">Are you productive in the world's most productive language?</h1>
-          <p className="text-xl">
+      <Typography fullPage>
+        <div className="flex flex-col text-center mt-32 mb-48 gap-8">
+          <h1 className="text-[3rem] text-primary my-0">
+            Are you productive in the world's most productive language?
+          </h1>
+          <h2 className="text-[1.5rem] mx-10 my-0 ">
             Here at TS Gurus we focus on improving your TypeScript skills and providing the tools
             and resources to improve your team's code.
+          </h2>
+          <p className="flex justify-center gap-4 my-0">
+            <Link className="btn btn-primary sm:btn-wide" href="/services/audit-service">
+              Audit your app
+            </Link>
+            <Link className="btn btn-outline sm:btn-wide" href="/services/">
+              View all services
+            </Link>
           </p>
         </div>
-      </Hero>
-
-      <Typography>
         <p>
           Annually, more code is authored and executed in JavaScript than in any other language,
           with this figure continually rising. The flexibility of JavaScript is a key benefit that
