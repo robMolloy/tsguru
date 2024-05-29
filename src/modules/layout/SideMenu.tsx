@@ -68,7 +68,12 @@ const linksMap: TLinksMap = [
         href: "/infer-types-from-vars-and-functions",
         label: "infer-types-from-vars-and-functions",
       },
-      { type: "link", href: "/inference-and-utility-types", label: "Inference And Utility Types" },
+      {
+        type: "link",
+        href: "/inference-and-utility-types",
+        label: "Inference And Utility Types",
+        c,
+      },
       { type: "link", href: "/intro-to-generics", label: "intro-to-generics" },
       { type: "link", href: "/intro-to-zod", label: "Intro to Zod", c },
       { type: "link", href: "/ts-encourages-better", label: "ts-encourages-better" },
@@ -163,7 +168,6 @@ export const SideMenu = (p: { show: boolean }) => {
                         >
                           {child.label}
                           {child.c ? " !!!COMPLETE!!!" : ""}
-                          {child.sc ? " !!!SEMI-COMPLETE!!!" : ""}
                         </Link>
                       </li>
                     ))}
