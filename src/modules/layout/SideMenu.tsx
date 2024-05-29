@@ -65,11 +65,6 @@ const linksMap: TLinksMap = [
       },
       {
         type: "link",
-        href: "/infer-types-from-vars-and-functions",
-        label: "infer-types-from-vars-and-functions",
-      },
-      {
-        type: "link",
         href: "/inference-and-utility-types",
         label: "Inference And Utility Types",
         c,
