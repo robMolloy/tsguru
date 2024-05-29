@@ -1,4 +1,4 @@
-- TODO: article: src/pages/guides/well-named-types.page.tsx
+- TODO: article: src/pages/guides/inference-and-utility-types.page.tsx
 - TODO: article: src/pages/guides/infer-types-from-vars-and-functions.page.tsx
 - TODO: article: src/pages/guides/intro-to-generics.page.tsx
 - TODO: article: src/pages/guides/ts-encourages-better.page.tsx
