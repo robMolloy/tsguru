@@ -5,16 +5,28 @@ export default function Page() {
   return (
     <Typography fullPage>
       <h1>Fetching Data Safely In React</h1>
-      <h2>Pre-cursor</h2>
+      <h2>Related reading</h2>
       <p>
-        In order to get the most out of this article, along with a basic understanding of
-        client-side React, it will be helpful to have a some understanding of the following;{" "}
-        <Link href="/recommendations/run-time-checking">Run-time Checking</Link>,{" "}
-        <Link href="/guides/any-vs-unknown">Any vs Unkown</Link> and{" "}
-        <Link href="/articles/type-narrowing-and-predicates">Type Narrowing & Predicates</Link>.{" "}
-        It's not required reading but if there's anything you don't understand in this article, the
-        linked articles/guides are likely to help.
+        The concepts and strategies in this article may be surprising or unfamiliar if this is the
+        first time you're seeing them. It's not required reading but if there's anything you don't
+        understand in this article, the following articles/guides, plus some understanding of
+        client-side React are likely to help.
       </p>
+
+      <ul>
+        <li>
+          <Link href="/recommendations/run-time-checking">Run-time Checking</Link>
+        </li>
+        <li>
+          <Link href="/guides/any-vs-unknown">Any vs Unkown</Link>
+        </li>
+        <li>
+          <Link href="/articles/type-narrowing-and-predicates">Type Narrowing & Predicates</Link>
+        </li>
+        <li>
+          <Link href="/guides/inference-and-utility-types">Inference and Utility Types</Link>
+        </li>
+      </ul>
       <h2>Intro</h2>
       <p>
         If all variables in a TypeScript app conformed precisely to their types this would remove a
