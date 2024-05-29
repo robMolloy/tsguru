@@ -127,7 +127,7 @@ export const SideMenu = (p: { show: boolean }) => {
             return (
               <li key={item.href}>
                 <Link href={item.href} className={router.route === item.href ? "active" : ""}>
-                  {item.label}
+                  {item.label} {item.hide && "!!!HIDE!!!"}
                 </Link>
               </li>
             );
@@ -151,7 +151,7 @@ export const SideMenu = (p: { show: boolean }) => {
                           href={`${item.href}${child.href}`}
                           className={router.route === `${item.href}${child.href}` ? "active" : ""}
                         >
-                          {child.label}
+                          {child.label} {child.hide && "!!!HIDE!!!"}
                         </Link>
                       </li>
                     ))}
