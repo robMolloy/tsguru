@@ -15,7 +15,7 @@ export default function Page(p: TStaticProps) {
 
   return (
     <Typography fullPage>
-      <h1>Conditional Types</h1>
+      <h1>Conditional Types Explained</h1>
       <h2>The basics</h2>
       <p>
         Conditional types can be difficult for developers to get their head around at first. As with
