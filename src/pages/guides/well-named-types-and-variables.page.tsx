@@ -6,11 +6,12 @@ export default function Page() {
     <Typography fullPage>
       <h1>Well Named Types And Variables</h1>
 
-      <h2>Why?</h2>
+      <h2>Does naming variables matter?</h2>
       <p>
-        Naming variables doesn't really matter. A computer doesn't care about the name of a
-        variable, in fact, once compiled/minified etc. it likely has a different name anyway. So
-        naming developers is for humans and there are two primary advantages to naming things well
+        In some sense naming variables doesn't really matter. A computer doesn't care about the name
+        of a variable, in fact, once compiled/minified etc. it likely has a different name anyway.
+        So naming developers is for humans, not computers, and there are two primary advantages to
+        naming things well.
       </p>
       <p>
         Readability - code which has badly-named variables can feel hard-to-read and make working in
@@ -31,15 +32,16 @@ export default function Page() {
       </p>
 
       <p className="flex justify-center text-center">
-        <h2>Does the name of this type accurately describe what it represents?</h2>
+        <h2>Does the name of this type/variable accurately describe what it represents?</h2>
       </p>
 
       <p>
         It's a simple (and quite an odd) question, but one that people so often don't ask
-        themselves. So any time you're naming a new variable make sure you're answering yes.
+        themselves. So any time you're naming a new variable make sure the answer to this question
+        is yes.
       </p>
 
-      <h2>Examples</h2>
+      <h2>Names vs entities</h2>
       <p>First let's look at a simple example that contains a common mistake.</p>
 
       <CodeBlock>{`const cats = ["fluffy", "simba", "bagpuss"]; // wrong!!!`}</CodeBlock>
@@ -58,39 +60,50 @@ export default function Page() {
 const catNames = ["fluffy", "simba", "bagpuss"];`}</CodeBlock>
 
       <p>
-        So this is now much more appropriately named as it accurately reflects the data structures
-        that underly the application.
+        So this is now much more appropriately named as it accurately reflects the entities
+        represented by the data structures that underly the application.
       </p>
 
+      <h2>Union types</h2>
       <p>
-        Now, let's look at some types. We are using a prefix of <code>T</code> to name our types but
-        this entirely optional if you prefer to leave it out, then feel free;
+        Now, let's look at some union types. We are using a prefix of <code>T</code> to name our
+        types, but this entirely optional if you prefer to leave it out then feel free;
       </p>
       <p>
         <code>"fluffy" | "simba" | "bagpuss"</code>, should this type be <code>TCatName</code> or{" "}
-        <code>TCatNames</code>. Intuitively, you may think <code>TCatNames</code>, but this is
-        actually wrong - let's look at why;
+        <code>TCatNames</code>? Well let's look at this example;
       </p>
 
-      <CodeBlock>{`const catName: TCatName = "fluffy";
-const catNames: TCatNames = ["fluffy", "simba"];
+      <CodeBlock>{`type TCatNames = "fluffy" | "simba" | "bagpuss";
+const catName: TCatNames = "fluffy"; // wrong!!! the variable is singular, but the type is plural`}</CodeBlock>
 
-// where the types would be
+      <p>
+        Intuitively, you may think that <code>TCatNames</code> is the correct name for the above
+        union, but this is actually wrong as the variable is singular, but the type is plural, and
+        therefore when we ask ourselve the question{" "}
+        <i>"Does the name of this type/variable accurately describe what it represents?"</i>, the
+        answer is no.
+      </p>
 
-type TCatName = "fluffy" | "simba" | "bagpuss";
-type TCatNames = TCatName[];`}</CodeBlock>
+      <p>Instead, we should name the types and variables as follows;</p>
+      <CodeBlock>{`type TCatName = "fluffy" | "simba" | "bagpuss";
+type TCatNames = TCatName[];
+
+const catName: TCatName = "fluffy"; 
+const catNames: TCatNames = ["fluffy", "simba"];`}</CodeBlock>
 
       <p>
         So if you're ever unsure if a type is named correctly, just declare a well-named variable
-        and declare the type as a test to check that the names are consistent. At TS Gurus we call
-        this "type-variables naming consistency", but to be honest it's just common-sense once
-        you've learned the common mistakes.
+        and declare the type to check that the names are consistent. At TS Gurus we call this
+        "type-var consistency", but to be honest it's just common-sense once you've learned the
+        common mistakes.
       </p>
 
+      <h2>Type variations</h2>
       <p>
-        Now let's return to our cat example and think about how to name items correctly. Here is the
-        data in our database (note that the user will not pass the createdAt and updatedAt fields,
-        this will be assigned by the database);
+        Now let's return to our cat example and think about how to name variations of{" "}
+        <code>TCat</code> correctly. Here is the data in our database (note that the user will not
+        pass the createdAt and updatedAt fields, this will be assigned by the database);
       </p>
 
       <CodeBlock>{`[
@@ -100,28 +113,56 @@ type TCatNames = TCatName[];`}</CodeBlock>
 ]`}</CodeBlock>
 
       <p>
-        And now let's think about a <code>createNewCat()</code> function. It may be tempting to
-        write the following;
+        One row of the database is the entity that our data represents and this should be seen as
+        the source of truth for our entity type <code>TCat</code>.
+      </p>
+
+      <p>
+        So let's think about a <code>createNewCat()</code> function. It may be tempting to write the
+        following;
       </p>
       <CodeBlock>{`const createNewCat = (x: TCat) => {
   // doSomething
 }`}</CodeBlock>
 
-      <p>Again, this is wrong, but why?</p>
-      <CodeBlock>{`const cat = { id: "id1", name: "fluffy", age: 5, createdAt: 1680219151, updatedAt: 1682897551 };
-const catSeed = { id: "id1", name: "fluffy", age: 5 };
+      <p>This is wrong, but why?</p>
+      <CodeBlock>{`type TCat = { id: string, name: string, age: number, createdAt: number, updatedAt: number };
+type TCatSeed = { id: string, name: string, age: number };
+const cat: TCat = { id: "id1", name: "fluffy", age: 5, createdAt: 1680219151, updatedAt: 1682897551 };
+const catSeed: TCatSeed = { id: "id1", name: "fluffy", age: 5 };
 
 const createNewCat = (x: TCatSeed) => {
   // doSomething
 };
-createNewCat(CatSeed)`}</CodeBlock>
+createNewCat(catSeed)`}</CodeBlock>
       <p>
-        Note that a cat should be a defined data-type that should correspond exactly to the
-        database. As such the variable/type passed into <code>createNewCat()</code> is not a TCat -
-        it is something else. You can be creative with the terminology if you don't like the term
-        "seed", but just make sure you are creating these distinctions. It is usually best to make
-        these decisions ahead of writing the code and build a consensus between all members of a
-        team.
+        As the type <code>TCat</code> should correspond exactly to the database, the variable/type
+        passed into <code>createNewCat()</code> is not a <code>TCat</code> - it is something else.
+        You can be creative with the terminology if you don't like the term "seed", but just make
+        sure you are creating these distinctions. It is usually best to make these decisions ahead
+        of writing the code and build a consensus between all members of a team.
+      </p>
+
+      <p>
+        We can make some improvements to the above code by inferring the <code>TCatSeed</code> from{" "}
+        <code>TCat</code>, and use TypeScript's built in <code>Omit</code> utility type.
+      </p>
+
+      <CodeBlock>{`type TCat = { id: string; name: string; age: number; createdAt: number; updatedAt: number };
+type TCatSeed = Omit<TCat, "createdAt" | "updatedAt">`}</CodeBlock>
+      <p>
+        This way, if the database changes we simply make a change to <code>TCat</code> and{" "}
+        <code>TCatSeed</code> will also update.
+      </p>
+      <p>
+        One way that developers sometimes try to approach this issue is by making a more
+        general/flexible type, such as;
+      </p>
+      <CodeBlock>{`type TCat = { id: string, name: string, age: number, createdAt?: number, updatedAt?: number };`}</CodeBlock>
+
+      <p>
+        This might be sufficient for smaller projects, but as projects grow, distinguishing between
+        different types becomes crucial.
       </p>
 
       <h2>Helpful reading and tips</h2>
@@ -132,8 +173,9 @@ createNewCat(CatSeed)`}</CodeBlock>
         <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html">
           TypeScript Docs
         </a>{" "}
-        - if used properly, utility types will enable changes to the database to propagate through
-        your type-system by making only a couple of changes.
+        - if used properly, utility types are like having a superpower that make fundamental changes
+        to the underlying data (i.e. adding, removing or editing a column in a database) to
+        propagate through your type-system by making only a couple of changes.
       </p>
       <p>
         Additionally have a read of{" "}
