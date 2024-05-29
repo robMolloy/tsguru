@@ -258,12 +258,13 @@ type TSafePetData = Awaited<ReturnType<typeof fetchSafePetData>>;
 type TSafePetDataSuccess = Extract<TSafePetData, { success: true }>;
 type TPetKind = TSafePetDataSuccess['kind'];`}</CodeBlock>
 
-      <h2>Additional resources</h2>
+      <h2>Summary</h2>
       <p>
-        As mentioned already, the TypeScript Docs have a section on{" "}
-        <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html">utility types</a>{" "}
-        that is well worth reading, but there are also summarised versions of similar topics
-        available in the <a href="https://www.typescriptlang.org/cheatsheets/">cheatsheets</a>.
+        We have only covered some of the available utility types, so don't forget to review{" "}
+        <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html">utility types</a>.{" "}
+        There are also summarised versions of similar topics available in the{" "}
+        <a href="https://www.typescriptlang.org/cheatsheets/">cheatsheets</a>. But most importantly
+        open up a new project and try them out.
       </p>
     </Typography>
   );
