@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-const c = true;
-const sc = true;
+const hide = true;
 
-type TLinksMapLink = { type: "link"; href: string; label: string; c?: true; sc?: true };
+type TLinksMapLink = { type: "link"; href: string; label: string; hide?: true };
 type TLinksMapLinkGroup = {
   type: "linkGroup";
   href: string;
@@ -19,18 +18,16 @@ const linksMap: TLinksMap = [
     href: "/articles",
     label: "Articles",
     links: [
-      { type: "link", href: "/no-infer", label: "NoInfer", c },
+      { type: "link", href: "/no-infer", label: "NoInfer" },
       {
         type: "link",
         href: "/no-unchecked-indexed-access",
         label: "tsconfig: noUncheckedIndexedAccess",
-        c,
       },
       {
         type: "link",
         href: "/type-narrowing-and-predicates",
         label: "type-narrowing-and-predicates",
-        c,
       },
     ],
   },
@@ -39,52 +36,46 @@ const linksMap: TLinksMap = [
     href: "/guides",
     label: "Guides",
     links: [
-      { type: "link", href: "/any-vs-unknown", label: "Any vs Unknown", c },
-      { type: "link", href: "/async-equals-uncertainty", label: "Async Equals Uncertainty", c },
-      { type: "link", href: "/categories-of-components", label: "Categories of Components", c },
-      { type: "link", href: "/certainty-boundary", label: "certainty-boundary", c },
+      { type: "link", href: "/any-vs-unknown", label: "Any vs Unknown" },
+      { type: "link", href: "/async-equals-uncertainty", label: "Async Equals Uncertainty" },
+      { type: "link", href: "/categories-of-components", label: "Categories of Components" },
+      { type: "link", href: "/certainty-boundary", label: "certainty-boundary" },
       {
         type: "link",
         href: "/conditional-types-explained",
         label: "Conditional Types Explained",
-        c,
       },
       {
         type: "link",
         href: "/conditional-types-visualised",
         label: "Conditional Types Visualised",
-        c,
       },
-      { type: "link", href: "/discriminated-unions", label: "Discriminated Unions", c },
-      { type: "link", href: "/facade-pattern", label: "Facade Pattern", c },
+      { type: "link", href: "/discriminated-unions", label: "Discriminated Unions" },
+      { type: "link", href: "/facade-pattern", label: "Facade Pattern" },
       {
         type: "link",
         href: "/fetching-data-safely-react",
         label: "Fetching Data Safely In React",
-        c,
       },
       {
         type: "link",
         href: "/inference-and-utility-types",
         label: "Inference And Utility Types",
-        c,
       },
-      { type: "link", href: "/intro-to-generics", label: "intro-to-generics" },
-      { type: "link", href: "/intro-to-zod", label: "Intro to Zod", c },
-      { type: "link", href: "/ts-encourages-better", label: "ts-encourages-better" },
-      { type: "link", href: "/type-assertion", label: "Type Assertion", c },
+      { type: "link", href: "/intro-to-generics", label: "intro-to-generics", hide },
+      { type: "link", href: "/intro-to-zod", label: "Intro to Zod" },
+      { type: "link", href: "/ts-encourages-better", label: "ts-encourages-better", hide },
+      { type: "link", href: "/type-assertion", label: "Type Assertion" },
       {
         type: "link",
         href: "/well-named-types-and-variables",
         label: "Well Named Types And Variables",
-        c,
       },
-      { type: "link", href: "/where-will-it-error", label: "where-will-it-error?" },
+      { type: "link", href: "/where-will-it-error", label: "where-will-it-error?", hide },
       {
         type: "link",
         href: "/write-naive-components",
         label: "write-naive-components",
-        c,
       },
     ],
   },
@@ -97,11 +88,10 @@ const linksMap: TLinksMap = [
         type: "link",
         href: "/development-workflow",
         label: "Development Workflow Recommendation",
-        c,
       },
-      { type: "link", href: "/framework", label: "Framework Recommendation", c },
-      { type: "link", href: "/run-time-checking", label: "Checking at run-time recommendation", c },
-      { type: "link", href: "/tsconfig", label: "tsconfig Recommendation", c },
+      { type: "link", href: "/framework", label: "Framework Recommendation" },
+      { type: "link", href: "/run-time-checking", label: "Checking at run-time recommendation" },
+      { type: "link", href: "/tsconfig", label: "tsconfig Recommendation" },
     ],
   },
   {
@@ -137,7 +127,7 @@ export const SideMenu = (p: { show: boolean }) => {
             return (
               <li key={item.href}>
                 <Link href={item.href} className={router.route === item.href ? "active" : ""}>
-                  {item.label} {item.c ? "!!!COMPLETE!!!" : ""}
+                  {item.label}
                 </Link>
               </li>
             );
@@ -162,7 +152,6 @@ export const SideMenu = (p: { show: boolean }) => {
                           className={router.route === `${item.href}${child.href}` ? "active" : ""}
                         >
                           {child.label}
-                          {child.c ? " !!!COMPLETE!!!" : ""}
                         </Link>
                       </li>
                     ))}

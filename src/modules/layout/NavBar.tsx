@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ThemeSelector } from "../themeSelector";
 
 export const NavBar = (p: { onToggleClick: () => void }) => {
@@ -21,13 +22,18 @@ export const NavBar = (p: { onToggleClick: () => void }) => {
         </button>
       </div>
       <div className="hidden md:block">
-        <a className="btn btn-ghost text-xl">TS Gurus</a>
+        <Link href="/" className="btn btn-ghost text-xl">
+          TS Gurus
+        </Link>
       </div>
       <div className="flex-1" />
       <div className="flex gap-4 pr-4">
-        <div className="btn btn-ghost">hello</div>
-        <div className="btn btn-ghost">world</div>
-
+        {false && (
+          <>
+            <div className="btn btn-ghost">hello</div>
+            <div className="btn btn-ghost">world</div>
+          </>
+        )}
         <div className="dropdown dropdown-end dropdown-bottom">
           <div tabIndex={0} role="button" className="btn btn-ghost">
             <div>Themes &#x25BC;</div>
