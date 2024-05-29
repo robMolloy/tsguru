@@ -78,12 +78,19 @@ if (result.success) {
   // Data is invalid
   console.error("Validation errors:", result.error.errors);
 }`}</CodeBlock>
+      <p>This is a simple use-case, but Zod can be used for data of any level of complexity.</p>
+
+      <h2>Additional resources</h2>
       <p>
-        This is a simple use-case, but Zod can be used for data of any level of complexity. If you
-        want to know more about Zod we would suggest you read the docs, or the other articles on
-        this site. But even more importantly, why not install it on your site today, using{" "}
+        If you want to know more about Zod we would suggest you read the docs, or the other articles
+        on this site. But even more importantly, why not install it on your site today, using{" "}
         <code>npm i zod</code> and start making the most of all it's incredible features and the
         advantages they bring.
+      </p>
+      <p>
+        If you're still not quite sure yet, why not have a play around with{" "}
+        <a href="https://zod-sandbox.vercel.app/">Zod sandbox</a>? Which is a simple tool for
+        learning and testing Zod schema validation functionalities.
       </p>
     </Typography>
   );
