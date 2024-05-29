@@ -19,13 +19,13 @@ export default function Page() {
         use discriminated unions to achieve this;
       </p>
       <CodeEditor height={40}>{`type TCircle = { kind: "circle"; radius: number };
-type TRectangle = { kind: "square"; width: number; height: number };
+type TRectangle = { kind: "rectangle"; width: number; height: number };
 type TShape = TCircle | TRectangle;
 
 const getShape = (): TShape => {
-  // returns either a variable of TCircle or TSquare
+  // returns either a variable of TCircle or TRectangle
   return Math.random() > 0.5
-    ? { kind: "square", width: 100, height: 200 }
+    ? { kind: "rectangle", width: 100, height: 200 }
     : { kind: "circle", radius: 100 };
 };
 
@@ -38,8 +38,8 @@ else console.log(\`width: \${shape.height} and height: \${shape.width}\`);
 if (shape.kind === "circle") console.log(\`width will error \${shape.width}\`);`}</CodeEditor>
 
       <p>
-        This gives instant feedback to the developer as if <code>shape.kind !== "square"</code> then{" "}
-        <code>shape.width</code> will give an error in the editor.
+        This gives instant feedback to the developer as if <code>shape.kind !== "rectangle"</code>{" "}
+        then <code>shape.width</code> will give an error in the editor.
       </p>
 
       <h2>Summary</h2>
