@@ -97,7 +97,6 @@ const useBearStore = create<TBearState>()((set, get) => ({
     if (bearsResponse === undefined) return { status: "loading" };
 
     const parseResponse = bearsSchema.safeParse(bearsResponse);
-    console.log(parseResponse);
 
     if (parseResponse.success) return { status: "success", data: parseResponse.data };
     return { status: "error" };

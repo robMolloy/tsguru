@@ -27,7 +27,7 @@ const linksMap: TLinksMap = [
       {
         type: "link",
         href: "/type-narrowing-and-predicates",
-        label: "type-narrowing-and-predicates",
+        label: "Type Narrowing & Predicates",
       },
     ],
   },
@@ -71,11 +71,11 @@ const linksMap: TLinksMap = [
         href: "/well-named-types-and-variables",
         label: "Well Named Types And Variables",
       },
-      { type: "link", href: "/where-will-it-error", label: "where-will-it-error?", hide },
+      { type: "link", href: "/where-will-it-error", label: "Where Will It Error?" },
       {
         type: "link",
         href: "/write-naive-components",
-        label: "write-naive-components",
+        label: "Write Naive Components",
       },
     ],
   },
