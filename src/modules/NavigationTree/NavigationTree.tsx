@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 const comingSoon = true;
 
-type TLinksMapLink = { type: "link"; href: string; label: string; comingSoon?: true };
+type TLinksMapLink = { type: "link"; href: string; label: string; hide?: true; comingSoon?: true };
 type TLinksMapLinkGroup = {
   type: "linkGroup";
   href: string;
@@ -116,25 +116,25 @@ const linksMap: TLinksMap = [
     ],
   },
 ] as const;
-
-export const SideMenu = (p: { CloseDrawerWrapper: React.FC<{ children?: React.ReactNode }> }) => {
+const DefaultCloseDrawerWrapper = (p: { children: React.ReactNode }) => <>{p.children}</>;
+export const NavigationTree = (p: { ListWrapper?: React.FC<{ children: React.ReactNode }> }) => {
   const router = useRouter();
+  const ListWrapper = p.ListWrapper ?? DefaultCloseDrawerWrapper;
 
   return (
-    <div className="h-full overflow-y-scroll">
-      <p.CloseDrawerWrapper>
-        <ul>
-          {linksMap.map((item) => {
+    <ListWrapper>
+      <ul>
+        {linksMap
+          .filter((item) => !(item.type === "link" && item.hide))
+          .map((item) => {
             if (item.type === "link")
-              return item.comingSoon ? (
-                <></>
-              ) : (
+              return (
                 <li key={item.href}>
                   <div
                     onClick={() => router.push(item.href)}
                     className={router.route === item.href ? "active" : ""}
                   >
-                    {item.label} {item.comingSoon && "!!!HIDE!!!"}
+                    {item.label}
                   </div>
                 </li>
               );
@@ -151,33 +151,34 @@ export const SideMenu = (p: { CloseDrawerWrapper: React.FC<{ children?: React.Re
                         {item.label}
                       </div>
                     </summary>
-                    <p.CloseDrawerWrapper>
+                    <ListWrapper>
                       <ul>
-                        {item.links.map((child) => (
-                          <li key={`${item.href}${child.href}`}>
-                            <div
-                              onClick={() => router.push(`${item.href}${child.href}`)}
-                              className={`${
-                                router.route === `${item.href}${child.href}` ? "active" : ""
-                              } flex justify-between`}
-                            >
-                              {child.label}
-                              {child.comingSoon && (
-                                <div className="badge badge-accent text-nowrap overflow-ellipsis">
-                                  Coming Soon
-                                </div>
-                              )}
-                            </div>
-                          </li>
-                        ))}
+                        {item.links
+                          .filter((child) => !(child.type === "link" && child.hide))
+                          .map((child) => (
+                            <li key={`${item.href}${child.href}`}>
+                              <div
+                                onClick={() => router.push(`${item.href}${child.href}`)}
+                                className={`${
+                                  router.route === `${item.href}${child.href}` ? "active" : ""
+                                } flex justify-between`}
+                              >
+                                {child.label}
+                                {child.comingSoon && (
+                                  <div className="badge badge-accent text-nowrap overflow-ellipsis">
+                                    Coming Soon
+                                  </div>
+                                )}
+                              </div>
+                            </li>
+                          ))}
                       </ul>
-                    </p.CloseDrawerWrapper>
+                    </ListWrapper>
                   </details>
                 </li>
               );
           })}
-        </ul>
-      </p.CloseDrawerWrapper>
-    </div>
+      </ul>
+    </ListWrapper>
   );
 };
