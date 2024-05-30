@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-const hide = true;
+const comingSoon = true;
 
-type TLinksMapLink = { type: "link"; href: string; label: string; hide?: true };
+type TLinksMapLink = { type: "link"; href: string; label: string; comingSoon?: true };
 type TLinksMapLinkGroup = {
   type: "linkGroup";
   href: string;
@@ -18,7 +18,7 @@ const linksMap: TLinksMap = [
     href: "/articles",
     label: "Articles",
     links: [
-      { type: "link", href: "/no-infer", label: "NoInfer" },
+      { type: "link", href: "/no-infer", label: "No Infer: TypeScript 5.4" },
       {
         type: "link",
         href: "/no-unchecked-indexed-access",
@@ -62,9 +62,14 @@ const linksMap: TLinksMap = [
         href: "/inference-and-utility-types",
         label: "Inference And Utility Types",
       },
-      { type: "link", href: "/intro-to-generics", label: "intro-to-generics", hide },
+      { type: "link", href: "/intro-to-generics", label: "Intro To Generics" },
       { type: "link", href: "/intro-to-zod", label: "Intro to Zod" },
-      { type: "link", href: "/ts-encourages-better", label: "ts-encourages-better", hide },
+      {
+        type: "link",
+        href: "/typescript-improves-code",
+        label: "TypeScript Improves Code",
+        comingSoon,
+      },
       { type: "link", href: "/type-assertion", label: "Type Assertion" },
       {
         type: "link",
@@ -124,10 +129,12 @@ export const SideMenu = (p: { show: boolean }) => {
       <ul className="menu">
         {linksMap.map((item) => {
           if (item.type === "link")
-            return (
+            return item.comingSoon ? (
+              <></>
+            ) : (
               <li key={item.href}>
                 <Link href={item.href} className={router.route === item.href ? "active" : ""}>
-                  {item.label} {item.hide && "!!!HIDE!!!"}
+                  {item.label} {item.comingSoon && "!!!HIDE!!!"}
                 </Link>
               </li>
             );
@@ -146,12 +153,17 @@ export const SideMenu = (p: { show: boolean }) => {
                   </summary>
                   <ul>
                     {item.links.map((child) => (
-                      <li key={`${item.href}${child.href}`} className="active">
+                      <li key={`${item.href}${child.href}`}>
                         <Link
                           href={`${item.href}${child.href}`}
-                          className={router.route === `${item.href}${child.href}` ? "active" : ""}
+                          className={`${
+                            router.route === `${item.href}${child.href}` ? "active" : ""
+                          } flex justify-between`}
                         >
-                          {child.label} {child.hide && "!!!HIDE!!!"}
+                          {child.label}
+                          {child.comingSoon && (
+                            <div className="badge badge-accent">Coming Soon</div>
+                          )}
                         </Link>
                       </li>
                     ))}

@@ -3,7 +3,7 @@ import { CodeEditor, Typography } from "@/components";
 export default function Page() {
   return (
     <Typography fullPage>
-      <h1>No Infer</h1>
+      <h1>No Infer: TypeScript 5.4</h1>
 
       <h2>What problem does NoInfer solve?</h2>
 
@@ -74,10 +74,13 @@ someFn2({ allPossibleValues: ["hi", "bye", "cry"], value: "bonjour" });`}
 
       <h2>How does NoInfer solve this?</h2>
       <p>
-        NoInfer is a helpful new utility type released in TypeScript 5.4 that deals with this common
-        use-case and enables code to be written more succinctly and clearly, by telling the compiler
-        which generic to focus it's initial inference on, then subsequent generics are inferred from
-        the initial reference. Just follow the example below;
+        NoInfer is a helpful new utility type released in{" "}
+        <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-4.html#the-noinfer-utility-type">
+          TypeScript 5.4
+        </a>{" "}
+        that deals with this common use-case and enables code to be written more succinctly and
+        clearly, by telling the compiler which generic to focus it's initial inference on, then
+        subsequent generics are inferred from the initial reference. Just follow the example below;
       </p>
 
       <div className="hidden">
