@@ -4,28 +4,24 @@ import Link from "next/link";
 export default function Page() {
   return (
     <div>
-      <div className="bg-gradient-to-tr from-base-100 via-base-100 via-75% to-primary ">
-        <Typography>
-          <div className="flex flex-col text-center pt-32 pb-48 gap-8">
-            <h1 className="text-[3rem] text-primary my-0">
-              Are you productive in the world's most productive language?
-            </h1>
-            <h2 className="text-[1.5rem] mx-10 my-0 ">
-              Here at TS Gurus we focus on improving your TypeScript skills and providing the tools
-              and resources to improve your team's code.
-            </h2>
-            <p className="flex justify-center gap-4 my-0">
-              <Link className="btn btn-primary sm:btn-wide" href="/services/audit-service">
-                Audit your app
-              </Link>
-              <Link className="btn btn-outline sm:btn-wide" href="/services/">
-                View all services
-              </Link>
-            </p>
-          </div>
-        </Typography>
-      </div>
       <Typography>
+        <div className="flex flex-col text-center pt-32 pb-48 gap-8">
+          <h1 className="text-[3rem] text-primary my-0">
+            Are you productive in the world's most productive language?
+          </h1>
+          <h2 className="text-[1.5rem] mx-10 my-0 ">
+            Here at TS Gurus we focus on improving your TypeScript skills and providing the tools
+            and resources to improve your team's code.
+          </h2>
+          <p className="flex justify-center gap-4 my-0">
+            <Link className="btn btn-primary sm:btn-wide" href="/services/audit-service">
+              Audit your app
+            </Link>
+            <Link className="btn btn-outline sm:btn-wide" href="/services/">
+              View all services
+            </Link>
+          </p>
+        </div>
         <p>
           Annually,{" "}
           <a href="https://octoverse.github.com/2022/top-programming-languages">
