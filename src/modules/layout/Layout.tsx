@@ -1,11 +1,17 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { SideMenu } from ".";
 import { ThemeSelector } from "../themeSelector";
+import { NavigationTree } from "@/modules/NavigationTree";
 
 const CloseDrawerWrapper: React.FC<{ children?: React.ReactNode }> = (p) => {
   return (
     <label htmlFor="sidebar" aria-label="close sidebar" className="drawer-overlay">
+      {p.children}
+    </label>
+  );
+};
+const OpenDrawerWrapper: React.FC<{ children?: React.ReactNode }> = (p) => {
+  return (
+    <label htmlFor="sidebar" aria-label="open sidebar" className="btn btn-square btn-ghost">
       {p.children}
     </label>
   );
@@ -19,7 +25,7 @@ export const Layout = (p: { children: React.ReactNode }) => {
         {/* Navbar */}
         <div className="w-full navbar bg-base-300">
           <div className="flex-none">
-            <label htmlFor="sidebar" aria-label="open sidebar" className="btn btn-square btn-ghost">
+            <OpenDrawerWrapper>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -33,14 +39,14 @@ export const Layout = (p: { children: React.ReactNode }) => {
                   d="M4 6h16M4 12h16M4 18h16"
                 ></path>
               </svg>
-            </label>
+            </OpenDrawerWrapper>
           </div>
           <div className="flex-1 px-2 mx-2">
             <Link href="/" className="btn btn-ghost text-xl">
               TS Gurus
             </Link>
           </div>
-          <div className="flex-none hidden lg:block">
+          <div className="flex-none block">
             <ul className="flex">
               <li>
                 <div className="dropdown dropdown-end dropdown-bottom">
@@ -64,8 +70,8 @@ export const Layout = (p: { children: React.ReactNode }) => {
       </div>
       <div className="drawer-side">
         <CloseDrawerWrapper />
-        <div className="menu p-0 m-0 w-80 min-h-full bg-base-100 border-r">
-          <SideMenu CloseDrawerWrapper={CloseDrawerWrapper} />
+        <div className="menu p-2 m-0 w-80 min-h-full bg-base-100 border-r">
+          <NavigationTree ListWrapper={CloseDrawerWrapper} />
         </div>
       </div>
     </div>
