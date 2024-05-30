@@ -13,8 +13,8 @@ export default function Page() {
 
       <h2>Even in development?</h2>
       <p>
-        Fine, sometimes in development. But it's just a quick to write a schema validation so why
-        would you do that?
+        Fine, sometimes in development. But it's just as quick to write a Zod schema and parse it
+        through that so why would you assert?
       </p>
 
       <h2>Did this really need to be a standalone article?</h2>

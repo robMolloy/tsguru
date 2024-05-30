@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { NavBar, SideMenu } from ".";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { SideMenu } from ".";
 import { ThemeSelector } from "../themeSelector";
 
 export type TLayoutProps = {
@@ -8,6 +8,7 @@ export type TLayoutProps = {
 };
 
 export const Layout = (p: TLayoutProps) => {
+  const router = useRouter();
   return (
     <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -65,8 +66,10 @@ export const Layout = (p: TLayoutProps) => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
-        <div className="menu p-0 m-0 w-80 min-h-full bg-base-200 border-r">
-          <SideMenu />
+        <div className="menu p-0 m-0 w-80 min-h-full bg-base-100 border-r">
+          <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay z-99">
+            <SideMenu />
+          </label>
         </div>
       </div>
     </div>

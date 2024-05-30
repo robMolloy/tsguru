@@ -122,16 +122,19 @@ export const SideMenu = () => {
 
   return (
     <div className="h-full overflow-y-scroll">
-      <ul className="menu bg-base-100">
+      <ul>
         {linksMap.map((item) => {
           if (item.type === "link")
             return item.comingSoon ? (
               <></>
             ) : (
               <li key={item.href}>
-                <Link href={item.href} className={router.route === item.href ? "active" : ""}>
+                <div
+                  onClick={() => router.push(item.href)}
+                  className={router.route === item.href ? "active" : ""}
+                >
                   {item.label} {item.comingSoon && "!!!HIDE!!!"}
-                </Link>
+                </div>
               </li>
             );
 
@@ -140,18 +143,18 @@ export const SideMenu = () => {
               <li key={item.href}>
                 <details open>
                   <summary>
-                    <Link
-                      href={item.href}
+                    <div
+                      onClick={() => router.push(item.href)}
                       className={router.route === `${item.href}` ? "active" : ""}
                     >
                       {item.label}
-                    </Link>
+                    </div>
                   </summary>
                   <ul>
                     {item.links.map((child) => (
                       <li key={`${item.href}${child.href}`}>
-                        <Link
-                          href={`${item.href}${child.href}`}
+                        <div
+                          onClick={() => router.push(`${item.href}${child.href}`)}
                           className={`${
                             router.route === `${item.href}${child.href}` ? "active" : ""
                           } flex justify-between`}
@@ -160,7 +163,7 @@ export const SideMenu = () => {
                           {child.comingSoon && (
                             <div className="badge badge-accent">Coming Soon</div>
                           )}
-                        </Link>
+                        </div>
                       </li>
                     ))}
                   </ul>
