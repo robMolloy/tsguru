@@ -4,8 +4,8 @@ import Link from "next/link";
 export default function Page() {
   return (
     <div>
-      <Typography>
-        <div className="flex flex-col text-center pt-32 pb-48 gap-8">
+      <Typography fullPage>
+        <div className="flex flex-col text-center pt-24 pb-48 gap-8">
           <h1 className="text-[3rem] text-primary my-0">
             Are you productive in the world's most productive language?
           </h1>
@@ -22,6 +22,7 @@ export default function Page() {
             </Link>
           </p>
         </div>
+
         <p>
           Annually,{" "}
           <a href="https://octoverse.github.com/2022/top-programming-languages">
