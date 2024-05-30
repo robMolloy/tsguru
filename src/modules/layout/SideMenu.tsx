@@ -117,16 +117,12 @@ const linksMap: TLinksMap = [
   },
 ] as const;
 
-export const SideMenu = (p: { show: boolean }) => {
+export const SideMenu = () => {
   const router = useRouter();
 
   return (
-    <div
-      className={`bg-base-200 min-w-72 h-screen overflow-y-scroll block border-r ${
-        p.show ? "" : "hidden"
-      }`}
-    >
-      <ul className="menu">
+    <div className="h-full overflow-y-scroll">
+      <ul className="menu bg-base-100">
         {linksMap.map((item) => {
           if (item.type === "link")
             return item.comingSoon ? (
@@ -174,5 +170,11 @@ export const SideMenu = (p: { show: boolean }) => {
         })}
       </ul>
     </div>
+    // <div
+    //   className={`bg-base-200 min-w-72 h-screen overflow-y-scroll block border-r ${
+    //     p.show ? "" : "hidden"
+    //   }`}
+    // >
+    // </div>
   );
 };
