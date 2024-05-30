@@ -3,24 +3,23 @@ import { useRouter } from "next/router";
 import { SideMenu } from ".";
 import { ThemeSelector } from "../themeSelector";
 
-export type TLayoutProps = {
-  children: React.ReactNode;
+const CloseDrawerWrapper: React.FC<{ children?: React.ReactNode }> = (p) => {
+  return (
+    <label htmlFor="sidebar" aria-label="close sidebar" className="drawer-overlay">
+      {p.children}
+    </label>
+  );
 };
 
-export const Layout = (p: TLayoutProps) => {
-  const router = useRouter();
+export const Layout = (p: { children: React.ReactNode }) => {
   return (
     <div className="drawer">
-      <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+      <input id="sidebar" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* Navbar */}
         <div className="w-full navbar bg-base-300">
           <div className="flex-none">
-            <label
-              htmlFor="my-drawer-3"
-              aria-label="open sidebar"
-              className="btn btn-square btn-ghost"
-            >
+            <label htmlFor="sidebar" aria-label="open sidebar" className="btn btn-square btn-ghost">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -61,15 +60,12 @@ export const Layout = (p: TLayoutProps) => {
             </ul>
           </div>
         </div>
-        {/* Page content here */}
         {p.children}
       </div>
       <div className="drawer-side">
-        <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
+        <CloseDrawerWrapper />
         <div className="menu p-0 m-0 w-80 min-h-full bg-base-100 border-r">
-          <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay z-99">
-            <SideMenu />
-          </label>
+          <SideMenu CloseDrawerWrapper={CloseDrawerWrapper} />
         </div>
       </div>
     </div>

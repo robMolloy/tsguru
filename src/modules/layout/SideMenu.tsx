@@ -117,67 +117,67 @@ const linksMap: TLinksMap = [
   },
 ] as const;
 
-export const SideMenu = () => {
+export const SideMenu = (p: { CloseDrawerWrapper: React.FC<{ children?: React.ReactNode }> }) => {
   const router = useRouter();
 
   return (
     <div className="h-full overflow-y-scroll">
-      <ul>
-        {linksMap.map((item) => {
-          if (item.type === "link")
-            return item.comingSoon ? (
-              <></>
-            ) : (
-              <li key={item.href}>
-                <div
-                  onClick={() => router.push(item.href)}
-                  className={router.route === item.href ? "active" : ""}
-                >
-                  {item.label} {item.comingSoon && "!!!HIDE!!!"}
-                </div>
-              </li>
-            );
+      <p.CloseDrawerWrapper>
+        <ul>
+          {linksMap.map((item) => {
+            if (item.type === "link")
+              return item.comingSoon ? (
+                <></>
+              ) : (
+                <li key={item.href}>
+                  <div
+                    onClick={() => router.push(item.href)}
+                    className={router.route === item.href ? "active" : ""}
+                  >
+                    {item.label} {item.comingSoon && "!!!HIDE!!!"}
+                  </div>
+                </li>
+              );
 
-          if (item.type === "linkGroup")
-            return (
-              <li key={item.href}>
-                <details open>
-                  <summary>
-                    <div
-                      onClick={() => router.push(item.href)}
-                      className={router.route === `${item.href}` ? "active" : ""}
-                    >
-                      {item.label}
-                    </div>
-                  </summary>
-                  <ul>
-                    {item.links.map((child) => (
-                      <li key={`${item.href}${child.href}`}>
-                        <div
-                          onClick={() => router.push(`${item.href}${child.href}`)}
-                          className={`${
-                            router.route === `${item.href}${child.href}` ? "active" : ""
-                          } flex justify-between`}
-                        >
-                          {child.label}
-                          {child.comingSoon && (
-                            <div className="badge badge-accent">Coming Soon</div>
-                          )}
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </details>
-              </li>
-            );
-        })}
-      </ul>
+            if (item.type === "linkGroup")
+              return (
+                <li key={item.href}>
+                  <details open>
+                    <summary>
+                      <div
+                        onClick={() => router.push(item.href)}
+                        className={router.route === `${item.href}` ? "active" : ""}
+                      >
+                        {item.label}
+                      </div>
+                    </summary>
+                    <p.CloseDrawerWrapper>
+                      <ul>
+                        {item.links.map((child) => (
+                          <li key={`${item.href}${child.href}`}>
+                            <div
+                              onClick={() => router.push(`${item.href}${child.href}`)}
+                              className={`${
+                                router.route === `${item.href}${child.href}` ? "active" : ""
+                              } flex justify-between`}
+                            >
+                              {child.label}
+                              {child.comingSoon && (
+                                <div className="badge badge-accent text-nowrap overflow-ellipsis">
+                                  Coming Soon
+                                </div>
+                              )}
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </p.CloseDrawerWrapper>
+                  </details>
+                </li>
+              );
+          })}
+        </ul>
+      </p.CloseDrawerWrapper>
     </div>
-    // <div
-    //   className={`bg-base-200 min-w-72 h-screen overflow-y-scroll block border-r ${
-    //     p.show ? "" : "hidden"
-    //   }`}
-    // >
-    // </div>
   );
 };
