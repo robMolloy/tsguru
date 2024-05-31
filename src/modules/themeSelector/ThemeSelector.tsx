@@ -73,33 +73,30 @@ export const ThemeSelector = () => {
   }, [themeName]);
 
   return (
-    <div>
-      <div className="flex flex-col gap-2">
-        {themeNames.map((x) => (
-          <div key={x}>
-            <div
-              data-theme={x}
-              className="btn btn-wide btn-base-100"
-              onClick={() => setThemeName(x)}
-            >
-              <div className="flex flex-col gap-2">
-                <div>
-                  {x} {x === themeName && <>&#10003;</>}
+    <div className="flex flex-col gap-2">
+      {themeNames.map((x) => (
+        <div
+          key={x}
+          data-theme={x}
+          className="btn btn-wide btn-base-100"
+          onClick={() => setThemeName(x)}
+        >
+          <div className="flex flex-col gap-2">
+            <div>
+              {x} {x === themeName && <>&#10003;</>}
+            </div>
+            <div className="flex gap-2">
+              {Object.entries(colorClassMap).map((entry) => (
+                <div key={`${x}-${entry[0]}`}>
+                  <div className="tooltip" data-tip={entry[0]}>
+                    <div className={`badge ${entry[1]} badge-xs border-base-100`}></div>
+                  </div>
                 </div>
-                <div className="flex gap-2">
-                  {Object.entries(colorClassMap).map((entry) => (
-                    <div key={`${x}-${entry[0]}`}>
-                      <div className="tooltip" data-tip={entry[0]}>
-                        <div className={`badge ${entry[1]} badge-xs border-base-100`}></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 };
