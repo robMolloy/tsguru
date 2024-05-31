@@ -1,3 +1,8 @@
+import { Typography } from "@/components";
 export default function Page() {
-  return <div>build service</div>;
+  return (
+    <Typography fullPage>
+      <h1>build service</h1>
+    </Typography>
+  );
 }

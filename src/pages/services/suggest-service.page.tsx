@@ -1,3 +1,8 @@
+import { Typography } from "@/components";
 export default function Page() {
-  return <div>suggest service</div>;
+  return (
+    <Typography fullPage>
+      <h1>suggest service</h1>
+    </Typography>
+  );
 }
