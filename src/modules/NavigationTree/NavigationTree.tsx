@@ -154,7 +154,7 @@ export const NavigationTree = (p: {
                       onClick={() => router.push(item.href)}
                       className={router.route === item.href ? "active" : ""}
                     >
-                      {item.label}
+                      <span className="text-nowrap">{item.label}</span>
                     </div>
                   </li>
                 );
@@ -183,9 +183,9 @@ export const NavigationTree = (p: {
                                     router.route === `${child.href}` ? "active" : ""
                                   } flex justify-between`}
                                 >
-                                  {child.label}
+                                  <span className="text-nowrap">{child.label}</span>
                                   {child.comingSoon && (
-                                    <div className="badge badge-accent text-nowrap overflow-ellipsis">
+                                    <div className="badge badge-accent overflow-ellipsis">
                                       Coming Soon
                                     </div>
                                   )}

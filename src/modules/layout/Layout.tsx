@@ -52,11 +52,9 @@ const NavBarDropdown = (p: { children: React.ReactNode; label: string }) => {
       </div>
       <div
         tabIndex={0}
-        className="dropdown-content mt-1 z-[1] p-0 shadow bg-base-100 rounded-box border"
+        className="dropdown-content mt-0 z-[1] p-0 shadow bg-base-100 rounded-box border"
       >
-        <div className="min-h-[15vh] max-h-[75vh] min-w-80 overflow-y-scroll rounded-box">
-          {p.children}
-        </div>
+        <div className="max-h-[75vh] overflow-y-scroll rounded-box">{p.children}</div>
       </div>
     </div>
   );
