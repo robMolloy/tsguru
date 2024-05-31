@@ -18,7 +18,7 @@ const OpenDrawerWrapper: React.FC<{ children?: React.ReactNode }> = (p) => {
 };
 
 const NavBarContainer = (p: { children: React.ReactNode }) => {
-  return <div className="w-full navbar bg-base-300">{p.children}</div>;
+  return <div className="w-full navbar bg-base-300 border-b">{p.children}</div>;
 };
 
 const BurgerMenuIcon = () => (
@@ -63,33 +63,27 @@ export const Layout = (p: { children: React.ReactNode }) => {
                 <BurgerMenuIcon />
               </OpenDrawerWrapper>
 
-              <div className="flex-1 px-2 mx-2">
+              <div className="flex-1">
                 <Link href="/" className="btn btn-ghost text-xl">
                   TS Gurus
                 </Link>
               </div>
 
-              <div className="flex-none block">
-                <ul className="flex">
-                  <li>
-                    <NavBarDropdown label="Themes">
-                      <ThemeSelector />
-                    </NavBarDropdown>
-                  </li>
-                </ul>
-              </div>
+              <NavBarDropdown label="Themes">
+                <ThemeSelector />
+              </NavBarDropdown>
             </div>
-            <div className="flex w-full">
-              <NavBarDropdown label="Themes">
+            <div className="hidden md:flex w-full">
+              <NavBarDropdown label="Articles">
                 <ThemeSelector />
               </NavBarDropdown>
-              <NavBarDropdown label="Themes">
+              <NavBarDropdown label="Guides">
                 <ThemeSelector />
               </NavBarDropdown>
-              <NavBarDropdown label="Themes">
+              <NavBarDropdown label="Recommendations">
                 <ThemeSelector />
               </NavBarDropdown>
-              <NavBarDropdown label="Themes">
+              <NavBarDropdown label="services">
                 <ThemeSelector />
               </NavBarDropdown>
             </div>
