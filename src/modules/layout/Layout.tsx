@@ -8,6 +8,8 @@ import {
   recommendationsLinks,
   servicesLinks,
 } from "@/modules/NavigationTree";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const CloseDrawerWrapper: React.FC<{ children?: React.ReactNode }> = (p) => {
   return (
@@ -61,6 +63,14 @@ const NavBarDropdown = (p: { children: React.ReactNode; label: string }) => {
 };
 
 export const Layout = (p: { children: React.ReactNode }) => {
+  const router = useRouter();
+  const [showTabsInBar, setShowTabsInBar] = useState(true);
+  useEffect(() => {
+    setShowTabsInBar(false);
+  }, [router.route]);
+  useEffect(() => {
+    if (!showTabsInBar) setShowTabsInBar(true);
+  }, [showTabsInBar]);
   return (
     <div className="drawer">
       <input id="sidebar" type="checkbox" className="drawer-toggle" />
@@ -87,18 +97,23 @@ export const Layout = (p: { children: React.ReactNode }) => {
               </div>
             </div>
             <div className="hidden sm:flex w-full">
-              <NavBarDropdown label="Articles">
-                <NavigationTree linksMap={articlesLinks} />
-              </NavBarDropdown>
-              <NavBarDropdown label="Guides">
-                <NavigationTree linksMap={guidesLinks} />
-              </NavBarDropdown>
-              <NavBarDropdown label="Recommendations">
-                <NavigationTree linksMap={recommendationsLinks} />
-              </NavBarDropdown>
-              <NavBarDropdown label="services">
-                <NavigationTree linksMap={servicesLinks} />
-              </NavBarDropdown>
+              {showTabsInBar && (
+                <>
+                  <NavBarDropdown label="Articles">
+                    <NavigationTree linksMap={articlesLinks} />
+                  </NavBarDropdown>
+                  <NavBarDropdown label="Guides">
+                    <NavigationTree linksMap={guidesLinks} />
+                  </NavBarDropdown>
+                  <NavBarDropdown label="Recommendations">
+                    <NavigationTree linksMap={recommendationsLinks} />
+                  </NavBarDropdown>
+                  <NavBarDropdown label="services">
+                    <NavigationTree linksMap={servicesLinks} />
+                  </NavBarDropdown>
+                </>
+              )}
+              <button className="opacity-0 btn" disabled></button>
             </div>
           </div>
         </NavBarContainer>
