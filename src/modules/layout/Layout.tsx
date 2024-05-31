@@ -39,7 +39,7 @@ const BurgerMenuIcon = () => (
 
 const NavBarDropdown = (p: { children: React.ReactNode; label: string }) => {
   return (
-    <div className="dropdown dropdown-end dropdown-bottom">
+    <div className="dropdown dropdown-start dropdown-bottom">
       <div tabIndex={0} role="button" className="btn btn-ghost">
         <div>{p.label} &#x25BC;</div>
       </div>
@@ -59,21 +59,24 @@ export const Layout = (p: { children: React.ReactNode }) => {
         <NavBarContainer>
           <div className="flex flex-col w-full">
             <div className="flex w-full">
-              <OpenDrawerWrapper>
-                <BurgerMenuIcon />
-              </OpenDrawerWrapper>
+              <div className="block sm:hidden">
+                <OpenDrawerWrapper>
+                  <BurgerMenuIcon />
+                </OpenDrawerWrapper>
+              </div>
 
               <div className="flex-1">
                 <Link href="/" className="btn btn-ghost text-xl">
                   TS Gurus
                 </Link>
               </div>
-
-              <NavBarDropdown label="Themes">
-                <ThemeSelector />
-              </NavBarDropdown>
+              <div>
+                <Link href="/services" className="btn btn-ghost ">
+                  View Services
+                </Link>
+              </div>
             </div>
-            <div className="hidden md:flex w-full">
+            <div className="hidden sm:flex w-full">
               <NavBarDropdown label="Articles">
                 <ThemeSelector />
               </NavBarDropdown>

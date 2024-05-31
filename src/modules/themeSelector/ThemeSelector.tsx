@@ -54,7 +54,7 @@ const themeNames = [
   "sunset",
 ] as const;
 
-export const ThemeSelector = () => {
+export const useThemes = () => {
   const [themeName, setThemeName] = useState<(typeof themeNames)[number] | undefined>("aqua");
 
   useEffect(() => {
@@ -72,6 +72,12 @@ export const ThemeSelector = () => {
     window.localStorage.setItem("themeName", themeName);
   }, [themeName]);
 
+  return { themeName, themeNames, setThemeName };
+};
+
+export const ThemeSelector = () => {
+  const themes = useThemes();
+
   return (
     <div className="flex flex-col gap-2">
       {themeNames.map((x) => (
@@ -79,11 +85,11 @@ export const ThemeSelector = () => {
           key={x}
           data-theme={x}
           className="btn btn-wide btn-base-100"
-          onClick={() => setThemeName(x)}
+          onClick={() => themes.setThemeName(x)}
         >
           <div className="flex flex-col gap-2">
             <div>
-              {x} {x === themeName && <>&#10003;</>}
+              {x} {x === themes.themeName && <>&#10003;</>}
             </div>
             <div className="flex gap-2">
               {Object.entries(colorClassMap).map((entry) => (
