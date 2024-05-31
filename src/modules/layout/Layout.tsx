@@ -1,6 +1,13 @@
 import Link from "next/link";
 import { ThemeSelector } from "../themeSelector";
-import { NavigationTree } from "@/modules/NavigationTree";
+import {
+  NavigationTree,
+  articlesLinks,
+  guidesLinks,
+  linksMap,
+  recommendationsLinks,
+  servicesLinks,
+} from "@/modules/NavigationTree";
 
 const CloseDrawerWrapper: React.FC<{ children?: React.ReactNode }> = (p) => {
   return (
@@ -43,8 +50,13 @@ const NavBarDropdown = (p: { children: React.ReactNode; label: string }) => {
       <div tabIndex={0} role="button" className="btn btn-ghost">
         <div>{p.label} &#x25BC;</div>
       </div>
-      <div tabIndex={0} className="dropdown-content mt-1 z-[1] p-2 shadow bg-neutral rounded-box">
-        <div className="h-[75vh] overflow-y-scroll rounded-box">{p.children}</div>
+      <div
+        tabIndex={0}
+        className="dropdown-content mt-1 z-[1] p-0 shadow bg-base-100 rounded-box border"
+      >
+        <div className="min-h-[15vh] max-h-[75vh] min-w-80 overflow-y-scroll rounded-box">
+          {p.children}
+        </div>
       </div>
     </div>
   );
@@ -78,16 +90,16 @@ export const Layout = (p: { children: React.ReactNode }) => {
             </div>
             <div className="hidden sm:flex w-full">
               <NavBarDropdown label="Articles">
-                <ThemeSelector />
+                <NavigationTree linksMap={articlesLinks} />
               </NavBarDropdown>
               <NavBarDropdown label="Guides">
-                <ThemeSelector />
+                <NavigationTree linksMap={guidesLinks} />
               </NavBarDropdown>
               <NavBarDropdown label="Recommendations">
-                <ThemeSelector />
+                <NavigationTree linksMap={recommendationsLinks} />
               </NavBarDropdown>
               <NavBarDropdown label="services">
-                <ThemeSelector />
+                <NavigationTree linksMap={servicesLinks} />
               </NavBarDropdown>
             </div>
           </div>
@@ -96,8 +108,9 @@ export const Layout = (p: { children: React.ReactNode }) => {
       </div>
       <div className="drawer-side">
         <CloseDrawerWrapper />
-        <div className="menu p-2 m-0 w-80 min-h-full bg-base-100 border-r">
-          <NavigationTree ListWrapper={CloseDrawerWrapper} />
+
+        <div className="p-1 m-0 min-w-80 min-h-full bg-base-100 border-r">
+          <NavigationTree linksMap={linksMap} ListWrapper={CloseDrawerWrapper} />
         </div>
       </div>
     </div>
