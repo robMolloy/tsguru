@@ -106,7 +106,7 @@ const useBearStore = create<TBearState>()((set, get) => ({
       <h2>Usage</h2>
       <p>
         The above store now allows us to write incredibly readable code, where each scenario can be
-        handled without unncecessarily complex logic.
+        handled without unnecessarily complex logic.
       </p>
 
       <CodeBlock>{`export const BearsComponent = () => {

@@ -136,7 +136,7 @@ type TSafePetData = ReturnType<typeof getSafePetData>;`}</CodeBlock>
         </a>
       </h2>
       <p>
-        The above scenario (in the <code>ReturnType</code> example) wouldn't be particulartly useful
+        The above scenario (in the <code>ReturnType</code> example) wouldn't be particularly useful
         to a developer if the function was asynchronous as it would give a type of{" "}
         <code>Promise&lt;TSafePetData&gt;</code>. So how do we deal with this scenario, in order to
         get the useable type?
@@ -208,7 +208,7 @@ type TObjectKind = TObject["kind"]; // this type is "dog" | "cat" | "fish"`}</Co
       <p>
         There are scenarios where third-party libraries don't make types accessible - when this is
         the case we can work a bit of TypeScript magic. For example, the excellent database
-        pocketbase doesn't make accessing the database type easily. We can fix this with the
+        Pocketbase doesn't make accessing the database type easily. We can fix this with the
         following code;
       </p>
       <CodeBlock>{`import PB from 'pocketbase';

@@ -112,7 +112,7 @@ const useBearStore = create<TBearState>()((set, get) => ({
       <h2>Usage</h2>
       <p>
         The above store now allows us to write incredibly readable code, where each scenario can be
-        handled without unncecessarily complex logic. As the following code uses a store it is an
+        handled without unnecessarily complex logic. As the following code uses a store it is an
         example of a smart component as defined in{" "}
         <Link href="/guides/categories-of-components">Categories of Components</Link>.
       </p>

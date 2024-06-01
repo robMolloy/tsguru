@@ -1,4 +1,4 @@
-import { CodeBlock, CodeEditor, Typography } from "@/components";
+import { CodeBlock, Typography } from "@/components";
 import Link from "next/link";
 
 export default function Page() {
@@ -18,7 +18,7 @@ export default function Page() {
           <Link href="/recommendations/run-time-checking">Run-time Checking</Link>
         </li>
         <li>
-          <Link href="/guides/any-vs-unknown">Any vs Unkown</Link>
+          <Link href="/guides/any-vs-unknown">Any vs Unknown</Link>
         </li>
         <li>
           <Link href="/articles/type-narrowing-and-predicates">Type Narrowing & Predicates</Link>

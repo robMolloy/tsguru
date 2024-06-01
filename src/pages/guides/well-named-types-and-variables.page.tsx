@@ -60,8 +60,8 @@ export default function Page() {
 const catNames = ["fluffy", "simba", "bagpuss"];`}</CodeBlock>
 
       <p>
-        So this is now much more appropriately named as it accurately reflects the entities
-        represented by the data structures that underly the application.
+        This is now much more appropriately named, as it accurately reflects the entities
+        represented by the data structures underlying the application.
       </p>
 
       <h2>Union types</h2>
@@ -80,7 +80,7 @@ const catName: TCatNames = "fluffy"; // wrong!!! the variable is singular, but t
       <p>
         Intuitively, you may think that <code>TCatNames</code> is the correct name for the above
         union, but this is actually wrong as the variable is singular, but the type is plural, and
-        therefore when we ask ourselve the question{" "}
+        therefore when we ask ourselves the question{" "}
         <i>"Does the name of this type/variable accurately describe what it represents?"</i>, the
         answer is no.
       </p>

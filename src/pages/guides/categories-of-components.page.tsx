@@ -14,8 +14,8 @@ export default function Page() {
       </p>
       <p>
         We feel that the distinction between categories of components should be based on the data
-        that is passed into or used within the component instaead of the "complexity" of the
-        elments/components that make it up.
+        that is passed into or used within the component instead of the "complexity" of the
+        elements/components that make it up.
       </p>
 
       <h2>Overview</h2>
@@ -36,7 +36,7 @@ export default function Page() {
           Loose-fitting components can simply be defined as components that don't fit in the above
           categories. However these components are likely to be similar to "Atomic Design principle"
           atoms. Using abstractions, these components can be made flexible but it is our
-          recommendation that the flexibility is kept only to the use-caqses that currently exist
+          recommendation that the flexibility is kept only to the use-cases that currently exist
           within the project.
         </li>
       </ul>
