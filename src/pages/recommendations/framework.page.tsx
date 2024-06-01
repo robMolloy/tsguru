@@ -43,8 +43,8 @@ export default function Page() {
         <p>
           Finally, like it or not, React/Next is the biggest player in the JS Frameworks world, has
           the backing of two of the biggest development companies in the world (Facebook & Vercel)
-          and there are more available React/Next devs than any of the framework competitor. Despite
-          all this, we couldn't agree more with Ben Awad in this great and hilarious video.
+          and there are more available React/Next developers than any of the framework competitor.
+          Despite all this, we couldn't agree more with Ben Awad in this great and hilarious video.
         </p>
         <p className="flex justify-center">
           <iframe

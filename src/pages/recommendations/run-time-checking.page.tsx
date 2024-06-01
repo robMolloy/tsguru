@@ -43,7 +43,7 @@ export default function Page() {
       <p>
         This is where the problems can start and usually you don't find out straight away. You'll be
         trying to create a new feature and there's a weird issue, but only some of time - you
-        realise you start debbugging through various screens and eventually realise it's coming from
+        realise you start debugging through various screens and eventually realise it's coming from
         a mismatch between your API call and the type you asserted.
       </p>
       <p>
