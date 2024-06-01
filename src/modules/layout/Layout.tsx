@@ -54,7 +54,7 @@ const NavBarDropdown = (p: { children: React.ReactNode; label: string }) => {
       </div>
       <div
         tabIndex={0}
-        className="dropdown-content mt-0 z-[1] p-0 shadow bg-base-100 rounded-box border"
+        className="dropdown-content mt-1 z-[1] p-0 shadow bg-base-100 rounded-box border"
       >
         <div className="max-h-[75vh] overflow-y-scroll rounded-box">{p.children}</div>
       </div>
@@ -62,15 +62,20 @@ const NavBarDropdown = (p: { children: React.ReactNode; label: string }) => {
   );
 };
 
+function useFlicker<T>(x: T) {
+  const [show, setShow] = useState(true);
+  useEffect(() => setShow(false), [x]);
+  useEffect(() => {
+    if (!show) setShow(true);
+  }, [show]);
+
+  return { show };
+}
+
 export const Layout = (p: { children: React.ReactNode }) => {
   const router = useRouter();
-  const [showTabsInBar, setShowTabsInBar] = useState(true);
-  useEffect(() => {
-    setShowTabsInBar(false);
-  }, [router.route]);
-  useEffect(() => {
-    if (!showTabsInBar) setShowTabsInBar(true);
-  }, [showTabsInBar]);
+  const { show: showTabsInBar } = useFlicker(router.route);
+
   return (
     <div className="drawer">
       <input id="sidebar" type="checkbox" className="drawer-toggle" />
@@ -86,13 +91,18 @@ export const Layout = (p: { children: React.ReactNode }) => {
               </div>
 
               <div className="flex-1">
-                <Link href="/" className="btn btn-ghost text-xl">
+                <Link href="/" className="text-xl btn btn-ghost">
                   TS Gurus
                 </Link>
               </div>
-              <div>
-                <Link href="/services" className="btn btn-ghost ">
-                  View Services
+              <div className="flex gap-4">
+                <div className="hidden sm:block">
+                  <Link href="/services" className="btn btn-ghost">
+                    View Services
+                  </Link>
+                </div>
+                <Link href="/services" className="btn btn-primary ">
+                  Get in touch
                 </Link>
               </div>
             </div>
@@ -111,6 +121,13 @@ export const Layout = (p: { children: React.ReactNode }) => {
                   <NavBarDropdown label="services">
                     <NavigationTree linksMap={servicesLinks} />
                   </NavBarDropdown>
+                  {/* <NavBarDropdown label="Themes">
+                    <div className="p-2">
+                      <div className="overflow-scroll">
+                        <ThemeSelector />
+                      </div>
+                    </div>
+                  </NavBarDropdown> */}
                 </>
               )}
               <button className="opacity-0 btn" disabled></button>

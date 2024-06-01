@@ -5,13 +5,13 @@ export default function Page() {
   return (
     <div>
       <Typography fullPage>
-        <div className="flex flex-col text-center pt-24 pb-48 gap-8">
+        <div className="flex flex-col text-center pt-12 sm:pt-24 pb-32 sm:pb-48 gap-8">
           <h1 className="text-[3rem] text-primary my-0">
             Are you productive in the world's most productive language?
           </h1>
           <h2 className="text-[1.5rem] mx-10 my-0 ">
-            Here at TS Gurus we focus on improving your TypeScript skills and providing the tools
-            and resources to improve your team's code.
+            Here at TS Gurus we focus on improving your TypeScript projects and providing the tools
+            and resources to improve the code your team delivers.
           </h2>
           <p className="flex justify-center gap-4 my-0">
             <Link className="btn btn-primary sm:btn-wide" href="/services/audit-service">

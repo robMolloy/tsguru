@@ -3,7 +3,6 @@
 - TODO: add a related reading section to all articles
 - TODO: create map of articles
 - TODO: About us page
-- TODO: tab bar
 - TODO: create and use logo in header bar
 - TODO:
 - TODO:
