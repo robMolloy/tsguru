@@ -84,7 +84,7 @@ export const recommendationsLinks: TLinksMapLink[] = [
   {
     type: "link",
     href: "/recommendations/run-time-checking",
-    label: "Checking at run-time recommendation",
+    label: "Run-time Checking",
   },
   { type: "link", href: "/recommendations/tsconfig", label: "tsconfig Recommendation" },
 ];

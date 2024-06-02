@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Page() {
   return (
     <Typography fullPage>
-      <h1>Run-time checking</h1>
+      <h1>Run-time Checking</h1>
       <h2>Related articles</h2>
 
       <p>
