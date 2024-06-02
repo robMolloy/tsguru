@@ -55,6 +55,7 @@ const NavBarDropdown = (p: { children: React.ReactNode; label: string }) => {
       <div
         tabIndex={0}
         className="dropdown-content mt-1 z-[1] p-0 shadow bg-base-100 rounded-box border"
+        style={{ opacity: "0.95" }}
       >
         <div className="max-h-[75vh] overflow-y-scroll rounded-box">{p.children}</div>
       </div>

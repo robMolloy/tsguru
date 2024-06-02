@@ -40,6 +40,7 @@ export const guidesLinks: TLinksMapLink[] = [
     label: "Conditional Types Visualised",
   },
   { type: "link", href: "/guides/discriminated-unions", label: "Discriminated Unions" },
+  { type: "link", href: "/guides/error-categories", label: "Error Categories" },
   { type: "link", href: "/guides/facade-pattern", label: "Facade Pattern" },
   {
     type: "link",
@@ -89,7 +90,6 @@ export const recommendationsLinks: TLinksMapLink[] = [
 ];
 
 export const servicesLinks: TLinksMapLink[] = [
-  { type: "link", href: "/services/advise-service", label: "advise-service" },
   { type: "link", href: "/services/audit-service", label: "audit-service" },
   { type: "link", href: "/services/build-service", label: "build-service" },
   { type: "link", href: "/services/contribute-service", label: "contribute-service" },
@@ -149,12 +149,17 @@ export const NavigationTree = (p: {
             .map((item) => {
               if (item.type === "link")
                 return (
-                  <li key={item.href}>
+                  <li key={`${item.href}`}>
                     <div
-                      onClick={() => router.push(item.href)}
-                      className={router.route === item.href ? "active" : ""}
+                      onClick={() => router.push(`${item.href}`)}
+                      className={`${
+                        router.route === `${item.href}` ? "active" : ""
+                      } flex justify-between`}
                     >
                       <span className="text-nowrap">{item.label}</span>
+                      {item.comingSoon && (
+                        <div className="badge badge-accent text-nowrap">Coming Soon</div>
+                      )}
                     </div>
                   </li>
                 );
@@ -185,9 +190,7 @@ export const NavigationTree = (p: {
                                 >
                                   <span className="text-nowrap">{child.label}</span>
                                   {child.comingSoon && (
-                                    <div className="badge badge-accent overflow-ellipsis">
-                                      Coming Soon
-                                    </div>
+                                    <div className="badge badge-accent">Coming Soon</div>
                                   )}
                                 </div>
                               </li>
