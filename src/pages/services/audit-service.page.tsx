@@ -3,17 +3,20 @@ import { Typography } from "@/components";
 export default function Page() {
   return (
     <Typography fullPage>
-      <h1>Audit (insight) Service</h1>
+      <h1>Audit Service</h1>
 
       <h2>What we do</h2>
       <p>
         We can evaluate any TypeScript back-end or front-end project for various errors using a
-        combination of automated and manual testing techniques. Automated tests systematically
-        identify syntax errors, type mismatches, and potential run-time issues, while developer
-        tests focus on logical flaws, incorrect assumptions and integration problems that might not
-        be easily detectable through automation alone. This dual approach ensures a thorough
-        evaluation, providing a clear picture of the project's current state and highlighting
-        critical areas that require attention.
+        combination of automated and manual testing techniques. This is the first step in engaging
+        TS Gurus in any existing project.
+      </p>
+      <p>
+        We use bespoke automated tests to identify syntax errors, type mismatches, and potential
+        run-time issues, along with developer tests that focus on logical flaws, incorrect
+        assumptions and integration problems that might not be easily detectable through automation
+        alone. This dual approach ensures a thorough evaluation, providing a clear picture of the
+        project's current state and highlighting critical areas that require attention.
       </p>
 
       <h2>Insight</h2>
