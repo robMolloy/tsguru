@@ -96,7 +96,6 @@ export const servicesLinks: TLinksMapLink[] = [
   { type: "link", href: "/services/contribute-service", label: "contribute-service" },
   { type: "link", href: "/services/learn-service", label: "learn-service", comingSoon },
   { type: "link", href: "/services/play-service", label: "play-service", comingSoon },
-  { type: "link", href: "/services/suggest-service", label: "suggest-service" },
 ];
 
 export const linksMap: TLinksMap = [
