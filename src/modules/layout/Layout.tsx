@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ThemeSelector } from "../themeSelector";
+// import { ThemeSelector } from "../themeSelector";
 import {
   NavigationTree,
   articlesLinks,
@@ -55,7 +55,7 @@ const NavBarDropdown = (p: { children: React.ReactNode; label: string }) => {
       <div
         tabIndex={0}
         className="dropdown-content mt-1 z-[1] p-0 shadow bg-base-100 rounded-box border"
-        style={{ opacity: "0.95" }}
+        style={{ opacity: "0.96" }}
       >
         <div className="max-h-[75vh] overflow-y-scroll rounded-box">{p.children}</div>
       </div>
@@ -102,7 +102,7 @@ export const Layout = (p: { children: React.ReactNode }) => {
                     View Services
                   </Link>
                 </div>
-                <Link href="/services" className="btn btn-primary ">
+                <Link href="/" className="btn btn-primary ">
                   Get in touch
                 </Link>
               </div>
@@ -111,16 +111,56 @@ export const Layout = (p: { children: React.ReactNode }) => {
               {showTabsInBar && (
                 <>
                   <NavBarDropdown label="Articles">
-                    <NavigationTree linksMap={articlesLinks} />
+                    <NavigationTree
+                      linksMap={[
+                        {
+                          type: "linkGroup",
+                          label: "All Articles",
+                          href: "/articles",
+                          links: articlesLinks,
+                        },
+                      ]}
+                      type="submenu"
+                    />
                   </NavBarDropdown>
                   <NavBarDropdown label="Guides">
-                    <NavigationTree linksMap={guidesLinks} />
+                    <NavigationTree
+                      linksMap={[
+                        {
+                          type: "linkGroup",
+                          label: "All Guides",
+                          href: "/guides",
+                          links: guidesLinks,
+                        },
+                      ]}
+                      type="submenu"
+                    />
                   </NavBarDropdown>
                   <NavBarDropdown label="Recommendations">
-                    <NavigationTree linksMap={recommendationsLinks} />
+                    <NavigationTree
+                      linksMap={[
+                        {
+                          type: "linkGroup",
+                          label: "All Recommendations",
+                          href: "/recommendations",
+                          links: recommendationsLinks,
+                        },
+                      ]}
+                      type="submenu"
+                    />
                   </NavBarDropdown>
                   <NavBarDropdown label="Services">
-                    <NavigationTree linksMap={servicesLinks} />
+                    <NavigationTree
+                      linksMap={[
+                        {
+                          type: "linkGroup",
+                          label: "All Services",
+                          href: "/services",
+                          links: servicesLinks,
+                        },
+                      ]}
+                      type="submenu"
+                    />
                   </NavBarDropdown>
                   {/* <NavBarDropdown label="Themes">
                     <div className="p-2">

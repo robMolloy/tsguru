@@ -25,6 +25,19 @@ export default function Page() {
           <Link href="/services/contribute-service">Contribute</Link>
         </li>
       </ul>
+
+      <p>
+        Any of these services can be customized to meet the specific needs and requirements of each
+        client. We take pride in offering flexible and adaptable solutions that cater to a wide
+        range of project demands and business objectives.
+      </p>
+
+      <h2>Get in touch</h2>
+      <p>
+        For a detailed discussion on how we can tailor our services to your unique situation, please
+        review our offerings or contact us directly to speak with one of our experts. We are here to
+        provide personalized guidance and support to ensure your project's success.
+      </p>
     </Typography>
   );
 }

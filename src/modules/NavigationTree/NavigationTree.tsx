@@ -28,7 +28,7 @@ export const guidesLinks: TLinksMapLink[] = [
   { type: "link", href: "/guides/any-vs-unknown", label: "Any vs Unknown" },
   { type: "link", href: "/guides/async-equals-uncertainty", label: "Async Equals Uncertainty" },
   { type: "link", href: "/guides/categories-of-components", label: "Categories of Components" },
-  { type: "link", href: "/guides/certainty-boundary", label: "certainty-boundary" },
+  { type: "link", href: "/guides/certainty-boundary", label: "Certainty Boundary" },
   {
     type: "link",
     href: "/guides/conditional-types-explained",
@@ -126,13 +126,50 @@ export const linksMap: TLinksMap = [
     links: servicesLinks,
   },
 ] as const;
-const DefaultListWrapper = (p: { children: React.ReactNode }) => <>{p.children}</>;
+const FragmentWrapper = (p: { children: React.ReactNode }) => <>{p.children}</>;
+const ParentWrapper = (p: { children: React.ReactNode }) => (
+  <div className="menu">{p.children}</div>
+);
+
+const DropdownComponent = (p: { href: string; label: string; children: React.ReactNode }) => {
+  const router = useRouter();
+
+  return (
+    <details open>
+      <summary>
+        <div
+          onClick={() => router.push(p.href)}
+          className={router.route === `${p.href}` ? "active" : ""}
+        >
+          {p.label}
+        </div>
+      </summary>
+      {p.children}
+    </details>
+  );
+};
+
+const SubmenuComponent = (p: { href: string; label: string; children: React.ReactNode }) => {
+  const router = useRouter();
+  return (
+    <>
+      <Link className={`${router.route === `${p.href}` ? "active" : ""}`} href={p.href}>
+        {p.label}
+      </Link>
+      {p.children}
+    </>
+  );
+};
+
 export const NavigationTree = (p: {
   linksMap: TLinksMap;
   ListWrapper?: React.FC<{ children: React.ReactNode }>;
+  type?: "dropdown" | "submenu";
 }) => {
+  const type = p.type ?? "dropdown";
   const router = useRouter();
-  const ListWrapper = p.ListWrapper ?? DefaultListWrapper;
+  const ListWrapper = p.ListWrapper ?? FragmentWrapper;
+  const ParentComponent = type === "dropdown" ? DropdownComponent : SubmenuComponent;
 
   return (
     <div className="menu">
@@ -161,15 +198,7 @@ export const NavigationTree = (p: {
               if (item.type === "linkGroup")
                 return (
                   <li key={item.href}>
-                    <details open>
-                      <summary>
-                        <div
-                          onClick={() => router.push(item.href)}
-                          className={router.route === `${item.href}` ? "active" : ""}
-                        >
-                          {item.label}
-                        </div>
-                      </summary>
+                    <ParentComponent label={item.label} href={item.href}>
                       <ListWrapper>
                         <ul>
                           {item.links
@@ -184,14 +213,16 @@ export const NavigationTree = (p: {
                                 >
                                   <span className="text-nowrap">{child.label}</span>
                                   {child.comingSoon && (
-                                    <div className="badge badge-accent">Coming Soon</div>
+                                    <div className="badge badge-accent text-nowrap">
+                                      Coming Soon
+                                    </div>
                                   )}
                                 </div>
                               </li>
                             ))}
                         </ul>
                       </ListWrapper>
-                    </details>
+                    </ParentComponent>
                   </li>
                 );
             })}
