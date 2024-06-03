@@ -119,7 +119,7 @@ export const Layout = (p: { children: React.ReactNode }) => {
                   <NavBarDropdown label="Recommendations">
                     <NavigationTree linksMap={recommendationsLinks} />
                   </NavBarDropdown>
-                  <NavBarDropdown label="services">
+                  <NavBarDropdown label="Services">
                     <NavigationTree linksMap={servicesLinks} />
                   </NavBarDropdown>
                   {/* <NavBarDropdown label="Themes">
