@@ -20,7 +20,7 @@ const OpenDrawerWrapper: React.FC<{ children?: React.ReactNode }> = (p) => {
 
 const NavBarContainer = (p: { children: React.ReactNode }) => {
   return (
-    <div className="sticky top-0 z-[99]">
+    <div className="sticky top-0 z-[98]">
       <div className="w-full navbar bg-base-300 border-b">{p.children}</div>
     </div>
   );
@@ -109,7 +109,11 @@ export const Layout = (p: { children: React.ReactNode }) => {
                   <NavBarDropdown label="Services">
                     <NavigationTree
                       linksMap={(() => {
-                        const links = linksMap.find((x) => x.href === "/services");
+                        const links = linksMap.find(
+                          (x) => x.href === "/services" && x.type === "linkGroup"
+                        );
+                        console.log({ linksMap, links });
+
                         return [links as NonNullable<typeof links>];
                       })()}
                       type="submenu"
@@ -118,7 +122,9 @@ export const Layout = (p: { children: React.ReactNode }) => {
                   <NavBarDropdown label="Articles">
                     <NavigationTree
                       linksMap={(() => {
-                        const links = linksMap.find((x) => x.href === "/articles");
+                        const links = linksMap.find(
+                          (x) => x.href === "/articles" && x.type === "linkGroup"
+                        );
                         return [links as NonNullable<typeof links>];
                       })()}
                       type="submenu"
@@ -127,7 +133,9 @@ export const Layout = (p: { children: React.ReactNode }) => {
                   <NavBarDropdown label="Guides">
                     <NavigationTree
                       linksMap={(() => {
-                        const links = linksMap.find((x) => x.href === "/guides");
+                        const links = linksMap.find(
+                          (x) => x.href === "/guides" && x.type === "linkGroup"
+                        );
                         return [links as NonNullable<typeof links>];
                       })()}
                       type="submenu"
@@ -136,7 +144,9 @@ export const Layout = (p: { children: React.ReactNode }) => {
                   <NavBarDropdown label="Recommendations">
                     <NavigationTree
                       linksMap={(() => {
-                        const links = linksMap.find((x) => x.href === "/recommendations");
+                        const links = linksMap.find(
+                          (x) => x.href === "/recommendations" && x.type === "linkGroup"
+                        );
                         return [links as NonNullable<typeof links>];
                       })()}
                       type="submenu"
@@ -157,7 +167,7 @@ export const Layout = (p: { children: React.ReactNode }) => {
         </NavBarContainer>
         {p.children}
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side z-[99]">
         <CloseDrawerWrapper />
 
         <div className="p-1 m-0 min-w-80 min-h-full bg-base-100 border-r">
