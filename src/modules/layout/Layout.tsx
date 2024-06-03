@@ -93,7 +93,7 @@ export const Layout = (p: { children: React.ReactNode }) => {
 
               <div className="flex-1">
                 <Link href="/" className="text-xl btn btn-ghost">
-                  TS Gurus
+                  TS Gurus shoue
                 </Link>
               </div>
               <div className="flex gap-4">
