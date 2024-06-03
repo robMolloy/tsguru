@@ -90,12 +90,12 @@ export const recommendationsLinks: TLinksMapLink[] = [
 ];
 
 export const servicesLinks: TLinksMapLink[] = [
-  { type: "link", href: "/services/advise-service", label: "advise-service" },
-  { type: "link", href: "/services/audit-service", label: "audit-service" },
-  { type: "link", href: "/services/build-service", label: "build-service" },
-  { type: "link", href: "/services/contribute-service", label: "contribute-service" },
-  { type: "link", href: "/services/learn-service", label: "learn-service", comingSoon },
-  { type: "link", href: "/services/play-service", label: "play-service", comingSoon },
+  { type: "link", href: "/services/advise-service", label: "Advise Service" },
+  { type: "link", href: "/services/audit-service", label: "Audit Service" },
+  { type: "link", href: "/services/build-service", label: "Build Service" },
+  { type: "link", href: "/services/contribute-service", label: "Contribute Service" },
+  { type: "link", href: "/services/learn-service", label: "Learn Service", comingSoon },
+  { type: "link", href: "/services/play-service", label: "Play Service", comingSoon },
 ];
 
 export const linksMap: TLinksMap = [
