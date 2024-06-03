@@ -1,13 +1,5 @@
 import Link from "next/link";
-// import { ThemeSelector } from "../themeSelector";
-import {
-  NavigationTree,
-  articlesLinks,
-  guidesLinks,
-  linksMap,
-  recommendationsLinks,
-  servicesLinks,
-} from "@/modules/NavigationTree";
+import { NavigationTree, linksMap } from "@/modules/NavigationTree";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -27,7 +19,11 @@ const OpenDrawerWrapper: React.FC<{ children?: React.ReactNode }> = (p) => {
 };
 
 const NavBarContainer = (p: { children: React.ReactNode }) => {
-  return <div className="w-full navbar bg-base-300 border-b">{p.children}</div>;
+  return (
+    <div className="sticky top-0 z-[99]">
+      <div className="w-full navbar bg-base-300 border-b">{p.children}</div>
+    </div>
+  );
 };
 
 const BurgerMenuIcon = () => (
@@ -98,7 +94,7 @@ export const Layout = (p: { children: React.ReactNode }) => {
               </div>
               <div className="flex gap-4">
                 <div className="hidden sm:block">
-                  <Link href="/services" className="btn btn-ghost">
+                  <Link href="#get-in-touch-form" className="btn btn-ghost">
                     View Services
                   </Link>
                 </div>
@@ -110,16 +106,21 @@ export const Layout = (p: { children: React.ReactNode }) => {
             <div className="hidden sm:flex w-full">
               {showTabsInBar && (
                 <>
+                  <NavBarDropdown label="Services">
+                    <NavigationTree
+                      linksMap={(() => {
+                        const links = linksMap.find((x) => x.href === "/services");
+                        return [links as NonNullable<typeof links>];
+                      })()}
+                      type="submenu"
+                    />
+                  </NavBarDropdown>
                   <NavBarDropdown label="Articles">
                     <NavigationTree
-                      linksMap={[
-                        {
-                          type: "linkGroup",
-                          label: "All Articles",
-                          href: "/articles",
-                          links: articlesLinks,
-                        },
-                      ]}
+                      linksMap={(() => {
+                        const links = linksMap.find((x) => x.href === "/articles");
+                        return [links as NonNullable<typeof links>];
+                      })()}
                       type="submenu"
                     />
                   </NavBarDropdown>
@@ -138,19 +139,6 @@ export const Layout = (p: { children: React.ReactNode }) => {
                         const links = linksMap.find((x) => x.href === "/recommendations");
                         return [links as NonNullable<typeof links>];
                       })()}
-                      type="submenu"
-                    />
-                  </NavBarDropdown>
-                  <NavBarDropdown label="Services">
-                    <NavigationTree
-                      linksMap={[
-                        {
-                          type: "linkGroup",
-                          label: "All Services",
-                          href: "/services",
-                          links: servicesLinks,
-                        },
-                      ]}
                       type="submenu"
                     />
                   </NavBarDropdown>

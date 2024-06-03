@@ -1,5 +1,6 @@
 - TODO: About us page
-- TODO: deploy to firebase
+- TODO: get in touch page
+- TODO: get in touch footer
 
 - TODO: add a related reading section to all articles
 - TODO: create map of articles

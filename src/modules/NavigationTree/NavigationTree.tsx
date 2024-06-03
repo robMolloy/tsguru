@@ -9,6 +9,7 @@ type TLinksMapLinkGroup = {
   href: string;
   label: string;
   links: TLinksMapLink[];
+  open: boolean;
 };
 type TLinksMap = (TLinksMapLink | TLinksMapLinkGroup)[];
 export const articlesLinks: TLinksMapLink[] = [
@@ -104,27 +105,31 @@ export const linksMap: TLinksMap = [
   { type: "link", href: "/services", label: "Services" },
   {
     type: "linkGroup",
+    href: "/services",
+    label: "All Services",
+    links: servicesLinks,
+    open: true,
+  },
+  {
+    type: "linkGroup",
     href: "/articles",
     label: "All Articles",
     links: articlesLinks,
+    open: false,
   },
   {
     type: "linkGroup",
     href: "/guides",
     label: "All Guides",
     links: guidesLinks,
+    open: false,
   },
   {
     type: "linkGroup",
     href: "/recommendations",
     label: "All Recommendations",
     links: recommendationsLinks,
-  },
-  {
-    type: "linkGroup",
-    href: "/services",
-    label: "All Services",
-    links: servicesLinks,
+    open: false,
   },
 ] as const;
 const FragmentWrapper = (p: { children: React.ReactNode }) => <>{p.children}</>;
@@ -132,11 +137,16 @@ const ParentWrapper = (p: { children: React.ReactNode }) => (
   <div className="menu">{p.children}</div>
 );
 
-const DropdownComponent = (p: { href: string; label: string; children: React.ReactNode }) => {
+const DropdownComponent = (p: {
+  href: string;
+  label: string;
+  children: React.ReactNode;
+  open: boolean;
+}) => {
   const router = useRouter();
 
   return (
-    <details open>
+    <details open={p.open}>
       <summary>
         <div
           onClick={() => router.push(p.href)}
@@ -150,7 +160,12 @@ const DropdownComponent = (p: { href: string; label: string; children: React.Rea
   );
 };
 
-const SubmenuComponent = (p: { href: string; label: string; children: React.ReactNode }) => {
+const SubmenuComponent = (p: {
+  href: string;
+  label: string;
+  children: React.ReactNode;
+  open: boolean;
+}) => {
   const router = useRouter();
   return (
     <>
@@ -199,7 +214,7 @@ export const NavigationTree = (p: {
               if (item.type === "linkGroup")
                 return (
                   <li key={`${item.href}-child`}>
-                    <ParentComponent label={item.label} href={item.href}>
+                    <ParentComponent label={item.label} href={item.href} open={item.open}>
                       <ListWrapper>
                         <ul>
                           {item.links
