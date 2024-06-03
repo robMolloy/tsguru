@@ -34,17 +34,25 @@ export default function App({ Component, pageProps }: AppProps) {
                   support to ensure your project's success.
                 </p>
 
-                <div id="get-in-touch-form">
-                  <label className="label">
-                    <span className="label-text">Enter your email address</span>
-                  </label>
+                <div id="get-in-touch-form" className="flex gap-2 flex-col">
                   <div>
+                    <label className="label">
+                      <span className="label-text">Enter your email address</span>
+                    </label>
                     <input
                       type="text"
-                      placeholder="username@site.com"
-                      className="input input-bordered"
+                      placeholder="Email"
+                      className="input input-bordered bg-white w-full"
                     />
-                    <button className="btn btn-primary">Subscribe</button>
+                  </div>
+                  <label className="form-control">
+                    <div className="label">
+                      <span className="label-text">Let us know what you'd like to discuss</span>
+                    </div>
+                    <textarea className="textarea textarea-bordered h-24 bg-white" />
+                  </label>
+                  <div>
+                    <button className="btn btn-primary">Send</button>
                   </div>
                 </div>
               </form>

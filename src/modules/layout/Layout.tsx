@@ -94,11 +94,11 @@ export const Layout = (p: { children: React.ReactNode }) => {
               </div>
               <div className="flex gap-4">
                 <div className="hidden sm:block">
-                  <Link href="#get-in-touch-form" className="btn btn-ghost">
+                  <Link href="/services" className="btn btn-ghost">
                     View Services
                   </Link>
                 </div>
-                <Link href="/" className="btn btn-primary ">
+                <Link href="#get-in-touch-form" className="btn btn-primary ">
                   Get in touch
                 </Link>
               </div>
@@ -112,7 +112,6 @@ export const Layout = (p: { children: React.ReactNode }) => {
                         const links = linksMap.find(
                           (x) => x.href === "/services" && x.type === "linkGroup"
                         );
-                        console.log({ linksMap, links });
 
                         return [links as NonNullable<typeof links>];
                       })()}
