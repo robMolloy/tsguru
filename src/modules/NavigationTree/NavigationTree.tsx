@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 const comingSoon = true;
+// deploy-check
 
 type TLinksMapLink = { type: "link"; href: string; label: string; hide?: true; comingSoon?: true };
 type TLinksMapLinkGroup = {
