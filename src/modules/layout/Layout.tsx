@@ -55,7 +55,7 @@ const NavBarDropdown = (p: { children: React.ReactNode; label: string }) => {
       <div
         tabIndex={0}
         className="dropdown-content mt-1 z-[1] p-0 shadow bg-base-100 rounded-box border"
-        style={{ opacity: "0.96" }}
+        style={{ opacity: "0.94" }}
       >
         <div className="max-h-[75vh] overflow-y-scroll rounded-box">{p.children}</div>
       </div>
@@ -125,27 +125,19 @@ export const Layout = (p: { children: React.ReactNode }) => {
                   </NavBarDropdown>
                   <NavBarDropdown label="Guides">
                     <NavigationTree
-                      linksMap={[
-                        {
-                          type: "linkGroup",
-                          label: "All Guides",
-                          href: "/guides",
-                          links: guidesLinks,
-                        },
-                      ]}
+                      linksMap={(() => {
+                        const links = linksMap.find((x) => x.href === "/guides");
+                        return [links as NonNullable<typeof links>];
+                      })()}
                       type="submenu"
                     />
                   </NavBarDropdown>
                   <NavBarDropdown label="Recommendations">
                     <NavigationTree
-                      linksMap={[
-                        {
-                          type: "linkGroup",
-                          label: "All Recommendations",
-                          href: "/recommendations",
-                          links: recommendationsLinks,
-                        },
-                      ]}
+                      linksMap={(() => {
+                        const links = linksMap.find((x) => x.href === "/recommendations");
+                        return [links as NonNullable<typeof links>];
+                      })()}
                       type="submenu"
                     />
                   </NavBarDropdown>

@@ -100,29 +100,29 @@ export const servicesLinks: TLinksMapLink[] = [
 
 export const linksMap: TLinksMap = [
   { type: "link", href: "/", label: "Home" },
-  { type: "link", href: "/services-overview", label: "Services Overview" },
+  { type: "link", href: "/services", label: "Services" },
   {
     type: "linkGroup",
     href: "/articles",
-    label: "Articles",
+    label: "All Articles",
     links: articlesLinks,
   },
   {
     type: "linkGroup",
     href: "/guides",
-    label: "Guides",
+    label: "All Guides",
     links: guidesLinks,
   },
   {
     type: "linkGroup",
     href: "/recommendations",
-    label: "Recommendations",
+    label: "All Recommendations",
     links: recommendationsLinks,
   },
   {
     type: "linkGroup",
     href: "/services",
-    label: "Services",
+    label: "All Services",
     links: servicesLinks,
   },
 ] as const;
@@ -197,7 +197,7 @@ export const NavigationTree = (p: {
 
               if (item.type === "linkGroup")
                 return (
-                  <li key={item.href}>
+                  <li key={`${item.href}-child`}>
                     <ParentComponent label={item.label} href={item.href}>
                       <ListWrapper>
                         <ul>
