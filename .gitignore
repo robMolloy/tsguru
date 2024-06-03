@@ -5,6 +5,7 @@ settings.json
 
 # dependencies
 /node_modules
+/.firebase
 /.pnp
 .pnp.js
 .yarn/install-state.gz
