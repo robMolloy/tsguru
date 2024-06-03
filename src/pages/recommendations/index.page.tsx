@@ -1,5 +1,5 @@
 import { Typography } from "@/components";
-import { guidesLinks, recommendationsLinks } from "@/modules/NavigationTree";
+import { recommendationsLinks } from "@/modules/NavigationTree";
 import Link from "next/link";
 
 export default function Page() {
