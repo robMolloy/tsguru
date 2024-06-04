@@ -1,5 +1,4 @@
 - TODO: About us page
-- TODO: get in touch page
 - TODO: get in touch footer
 
 - TODO: add a related reading section to all articles
