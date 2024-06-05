@@ -1,6 +1,6 @@
 import { NavigationTree, linksMap } from "@/modules/NavigationTree";
 import { Footer } from "./Footer";
-import { NavBar } from "./Navbar";
+import { NavBar } from "./NavBar";
 
 const CloseDrawerWrapper: React.FC<{ children?: React.ReactNode }> = (p) => {
   return (
@@ -24,6 +24,9 @@ const NavBarContainer = (p: { children: React.ReactNode }) => {
     </div>
   );
 };
+const DrawerContainer = (p: { children: React.ReactNode }) => {
+  return <div className="m-0 min-h-full min-w-80 border-r bg-base-100 p-1">{p.children}</div>;
+};
 
 export const Layout = (p: { children: React.ReactNode }) => {
   return (
@@ -39,9 +42,9 @@ export const Layout = (p: { children: React.ReactNode }) => {
         <div className="drawer-side z-[99]">
           <CloseDrawerWrapper />
 
-          <div className="m-0 min-h-full min-w-80 border-r bg-base-100 p-1">
+          <DrawerContainer>
             <NavigationTree linksMap={linksMap} ListWrapper={CloseDrawerWrapper} />
-          </div>
+          </DrawerContainer>
         </div>
       </div>
       <Footer />

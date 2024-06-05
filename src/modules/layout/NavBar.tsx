@@ -1,6 +1,13 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { NavigationTree, linksMap } from "../NavigationTree";
+import {
+  NavigationTree,
+  articlesLinks,
+  guidesLinks,
+  linksMap,
+  recommendationsLinks,
+  servicesLinks,
+} from "../NavigationTree";
 import { useRouter } from "next/router";
 
 const BurgerMenuIcon = () => (
@@ -82,49 +89,16 @@ export const NavBar = (p: TNavbarProps) => {
         {showTabsInBar && (
           <>
             <NavBarDropdown label="Services">
-              <NavigationTree
-                linksMap={(() => {
-                  const links = linksMap.find(
-                    (x) => x.href === "/services" && x.type === "linkGroup",
-                  );
-
-                  return [links as NonNullable<typeof links>];
-                })()}
-                type="submenu"
-              />
+              <NavigationTree linksMap={servicesLinks} type="submenu" />
             </NavBarDropdown>
             <NavBarDropdown label="Articles">
-              <NavigationTree
-                linksMap={(() => {
-                  const links = linksMap.find(
-                    (x) => x.href === "/articles" && x.type === "linkGroup",
-                  );
-                  return [links as NonNullable<typeof links>];
-                })()}
-                type="submenu"
-              />
+              <NavigationTree linksMap={articlesLinks} type="submenu" />
             </NavBarDropdown>
             <NavBarDropdown label="Guides">
-              <NavigationTree
-                linksMap={(() => {
-                  const links = linksMap.find(
-                    (x) => x.href === "/guides" && x.type === "linkGroup",
-                  );
-                  return [links as NonNullable<typeof links>];
-                })()}
-                type="submenu"
-              />
+              <NavigationTree linksMap={guidesLinks} type="submenu" />
             </NavBarDropdown>
             <NavBarDropdown label="Recommendations">
-              <NavigationTree
-                linksMap={(() => {
-                  const links = linksMap.find(
-                    (x) => x.href === "/recommendations" && x.type === "linkGroup",
-                  );
-                  return [links as NonNullable<typeof links>];
-                })()}
-                type="submenu"
-              />
+              <NavigationTree linksMap={recommendationsLinks} type="submenu" />
             </NavBarDropdown>
             {/* <NavBarDropdown label="Themes">
                     <div className="p-2">
