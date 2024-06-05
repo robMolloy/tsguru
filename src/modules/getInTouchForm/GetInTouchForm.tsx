@@ -6,8 +6,7 @@ export type TGetInTouchFormProps = {
   onSubmitFail: () => void;
 };
 
-// const getInitFormData = () => ({ email: "", details: "" });
-const getInitFormData = () => ({ email: "blah@aol.com", details: "12345678901234567890" });
+const getInitFormData = () => ({ email: "", details: "" });
 const getInitFormErrors = () => ({ email: "", details: "" });
 export const GetInTouchForm = (p: TGetInTouchFormProps) => {
   const [showSubmitSuccessMessage, setShowSubmitSuccessMessage] = useState(false);
@@ -58,18 +57,21 @@ export const GetInTouchForm = (p: TGetInTouchFormProps) => {
   };
 
   useEffect(() => {
-    if (!firstEmailCheck) return validateEmailInput();
+    console.log("det", Math.random());
 
-    setFirstEmailCheck(false);
-    setFormErrors(getInitFormErrors());
-  }, [formData.email]);
-
-  useEffect(() => {
     if (firstDetailsCheck) return validateDetailsInput();
 
     setFirstDetailsCheck(false);
     setFormErrors(getInitFormErrors());
   }, [formData.details]);
+
+  useEffect(() => {
+    console.log("em", Math.random());
+    if (!firstEmailCheck) return validateEmailInput();
+
+    setFirstEmailCheck(false);
+    setFormErrors(getInitFormErrors());
+  }, [formData.email]);
 
   return (
     <form
@@ -132,7 +134,7 @@ export const GetInTouchForm = (p: TGetInTouchFormProps) => {
             }}
           />
           <div className="label">
-            <span className={`badge badge-error min-w-48 ${formErrors.email ? "" : "opacity-0"}`}>
+            <span className={`badge badge-error w-full ${formErrors.email ? "" : "opacity-0"}`}>
               {formErrors.email}
             </span>
           </div>
@@ -153,7 +155,7 @@ export const GetInTouchForm = (p: TGetInTouchFormProps) => {
             }}
           />
           <div className="label">
-            <span className={`badge badge-error min-w-48 ${formErrors.details ? "" : "opacity-0"}`}>
+            <span className={`badge badge-error w-full ${formErrors.details ? "" : "opacity-0"}`}>
               {formErrors.details}
             </span>
           </div>
