@@ -3,4 +3,5 @@ export * from "./CodeEditor";
 export * from "./Typography";
 export * from "./ConditionalTypesTreeVisualisation";
 export * from "./Toggle";
-export * from "./Footer";
+export * from "./DaisyFooter";
+export * from "./VerticalSpacing";
