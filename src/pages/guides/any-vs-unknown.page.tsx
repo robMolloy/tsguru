@@ -18,15 +18,16 @@ export default function Page() {
       </p>
 
       <p>
-        You can probably stop reading here, but if you want to why this is the case then read on.
+        You can probably stop reading here, but if you want to know why this is the case then read
+        on.
       </p>
 
       <h2>But why?</h2>
       <p>
         Every time you use <code>any</code>, you are turning off type checking for that variable
         (and sometimes degrading the type checking of the variables that come into contact with the
-        any). This means that you are losing all the benefits of using TypeScript in the first place
-        - all that hard work just thrown away.
+        <code>any</code>). This means that you are losing all the benefits of using TypeScript in
+        the first place - all that hard work just thrown away.
       </p>
 
       <p>
@@ -78,7 +79,10 @@ const fetchValue3 = async () => {
   const response = await fetch("https://someapi.com/somedatabutcouldbeanerror");
   const initData = (await response.json()) as unknown;
 
-  const parseResponse = schema.safeParse(initData); // this will throw an error if initData does not correspond to the schema
+  const parseResponse = schema.safeParse(initData); 
+  // this will return one of two objects 
+  // { success: true, data: ... } valid data returned in data key
+  // { success: false, error: ... } clear error returned in error key (although we will not use it in this example)
 
   if(parseResponse.success) return parseResponse.hello.goodbye.howareyoutoday;
   else return "defaultValue";
