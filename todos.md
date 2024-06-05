@@ -1,5 +1,4 @@
-- TODO: About us page
-- TODO: get in touch footer
+- TODO: Focus users on goal - get them to contact
 
 - TODO: add a related reading section to all articles
 - TODO: create map of articles
