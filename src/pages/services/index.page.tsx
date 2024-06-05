@@ -8,7 +8,7 @@ export default function Page() {
 
       <h2>Available services</h2>
       <p>
-        TS Gurus offers the following paid services alongside the many articles guides and
+        TS Gurus offers the following paid services alongside many articles, guides and
         recommendations that are freely available;
       </p>
       <ul>
