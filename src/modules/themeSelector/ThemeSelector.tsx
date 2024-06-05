@@ -84,7 +84,7 @@ export const ThemeSelector = () => {
         <div
           key={x}
           data-theme={x}
-          className="btn btn-wide btn-base-100"
+          className="btn-base-100 btn btn-wide"
           onClick={() => themes.setThemeName(x)}
         >
           <div className="flex flex-col gap-2">
