@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { z } from "zod";
 
 export type TGetInTouchFormProps = {
@@ -12,75 +12,68 @@ export const GetInTouchForm = (p: TGetInTouchFormProps) => {
   const [showSubmitSuccessMessage, setShowSubmitSuccessMessage] = useState(false);
   const [showSubmitFailMessage, setShowSubmitFailMessage] = useState(false);
 
-  const [firstEmailCheck, setFirstEmailCheck] = useState(true);
-  const [firstDetailsCheck, setFirstDetailsCheck] = useState(true);
   const [formData, setFormData] = useState(getInitFormData());
   const [formErrors, setFormErrors] = useState(getInitFormErrors());
 
-  const checkEmailInput = () => {
-    const value = formData.email;
-
+  const checkEmailInput = (p?: { value?: string }) => {
+    const value = p?.value ? p.value : formData.email;
     const schema = z.string().email();
     const parseResponse = schema.safeParse(value);
     if (parseResponse.success) return { success: true } as const;
+    const errorMessage = parseResponse.error.issues.find((x) => x.message)?.message as string;
 
-    const initEmailError = parseResponse.error.issues.find((x) => x.message);
-    const emailErrorMessage = initEmailError?.message as string;
-    return { success: false, error: emailErrorMessage } as const;
+    return { success: false, error: errorMessage } as const;
   };
 
-  const validateEmailInput = () => {
-    const checkResponse = checkEmailInput();
-    setFormErrors({ ...formErrors, email: checkResponse.success ? "" : checkResponse.error });
+  const validateEmailInput = (p?: { value?: string }) => {
+    const checkResponse = checkEmailInput(p);
+
+    const emailFormError = checkResponse.success ? "" : checkResponse.error;
+
+    setFormErrors({ ...formErrors, email: emailFormError });
   };
 
-  const checkDetailsInput = () => {
+  const checkDetailsInput = (p?: { value?: string }) => {
+    const value = p?.value ? p.value : formData.details;
     const schema = z.string().min(20).max(400);
 
-    const parseResponse = schema.safeParse(formData.details);
+    const parseResponse = schema.safeParse(value);
     if (parseResponse.success) return { success: true } as const;
 
     const errorMessage = parseResponse.error.issues.find((x) => x.message)?.message as string;
     return { success: false, error: errorMessage } as const;
   };
 
-  const validateDetailsInput = () => {
-    const checkResponse = checkDetailsInput();
+  const validateDetailsInput = (p?: { value?: string }) => {
+    const checkResponse = checkDetailsInput(p);
     setFormErrors({ ...formErrors, details: checkResponse.success ? "" : checkResponse.error });
   };
 
+  const validateFormInputs = () => {
+    const checkEmailResponse = checkEmailInput();
+    const checkDetailsResponse = checkDetailsInput();
+
+    setFormErrors({
+      email: checkEmailResponse.success ? "" : checkEmailResponse.error,
+      details: checkDetailsResponse.success ? "" : checkDetailsResponse.error,
+    });
+  };
+
   const initForm = () => {
-    setFirstEmailCheck(true);
-    setFirstDetailsCheck(true);
     setFormData(getInitFormData());
     setFormErrors(getInitFormErrors());
   };
-
-  useEffect(() => {
-    console.log("det", Math.random());
-
-    if (firstDetailsCheck) return validateDetailsInput();
-
-    setFirstDetailsCheck(false);
-    setFormErrors(getInitFormErrors());
-  }, [formData.details]);
-
-  useEffect(() => {
-    console.log("em", Math.random());
-    if (!firstEmailCheck) return validateEmailInput();
-
-    setFirstEmailCheck(false);
-    setFormErrors(getInitFormErrors());
-  }, [formData.email]);
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
 
-        validateEmailInput();
-        validateDetailsInput();
-        const isError = !!Object.values(formErrors).find((x) => !!x);
+        validateFormInputs();
+
+        const checkEmailResponse = checkEmailInput();
+        const checkDetailsResponse = checkDetailsInput();
+        const isError = !checkEmailResponse.success || !checkDetailsResponse.success;
         if (!isError) {
           setShowSubmitSuccessMessage(true);
           setTimeout(() => setShowSubmitSuccessMessage(false), 4000);
@@ -115,7 +108,7 @@ export const GetInTouchForm = (p: TGetInTouchFormProps) => {
         </div>
       )}
 
-      <div id="get-in-touch-form" className="flex flex-col gap-2">
+      <div id="get-in-touch-form" className="flex flex-col">
         <div>
           <label className="label">
             <span className="label-text">Enter your email address</span>
@@ -128,9 +121,8 @@ export const GetInTouchForm = (p: TGetInTouchFormProps) => {
             onInput={(initEvt) => {
               const evt = initEvt as unknown as { target: { value: string } };
               const value = evt.target.value;
-              setFormData((x) => {
-                return { ...x, email: value };
-              });
+              setFormData({ ...formData, email: value });
+              validateEmailInput({ value });
             }}
           />
           <div className="label">
@@ -143,7 +135,6 @@ export const GetInTouchForm = (p: TGetInTouchFormProps) => {
           <div className="label">
             <span className="label-text">Let us know what you'd like to discuss</span>
           </div>
-
           <textarea
             className="textarea textarea-bordered h-24 bg-white text-gray-500"
             placeholder="We would like to..."
@@ -152,6 +143,7 @@ export const GetInTouchForm = (p: TGetInTouchFormProps) => {
               const evt = initEvt as unknown as { target: { value: string } };
               const value = evt.target.value;
               setFormData((x) => ({ ...x, details: value }));
+              validateDetailsInput({ value });
             }}
           />
           <div className="label">
