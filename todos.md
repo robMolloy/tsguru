@@ -5,8 +5,4 @@
 - TODO: create and use logo in header bar
 
 - TODO: setup links in a better way that is then used in articles to get article title and sideMenu
-- TODO: <NavigationTree /> refactor
-
-- TODO:
-
-0 guides to go
+- TODO: `export const link = {}` on each page?
