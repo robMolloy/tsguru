@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 const comingSoon = true;
-// deploy-check
 
 type TLinksMapLink = { type: "link"; href: string; label: string; hide?: true; comingSoon?: true };
 type TLinksMapLinkGroup = {
@@ -92,42 +91,44 @@ export const recommendationsLinks: TLinksMapLink[] = [
 ];
 
 export const servicesLinks: TLinksMapLink[] = [
+  { type: "link", href: "/services", label: "All Services" },
   { type: "link", href: "/services/advise-service", label: "Advise Service" },
   { type: "link", href: "/services/audit-service", label: "Audit Service" },
   { type: "link", href: "/services/build-service", label: "Build Service" },
   { type: "link", href: "/services/contribute-service", label: "Contribute Service" },
   { type: "link", href: "/services/learn-service", label: "Learn Service", comingSoon },
   { type: "link", href: "/services/play-service", label: "Play Service", comingSoon },
+  { type: "link", href: "/services/teach-service", label: "Teach Service", comingSoon },
 ];
 
 export const linksMap: TLinksMap = [
   { type: "link", href: "/", label: "Home" },
-  { type: "link", href: "/services", label: "Services" },
+  { type: "link", href: "/about-us", label: "About Us" },
   {
     type: "linkGroup",
     href: "/services",
-    label: "All Services",
+    label: "Services",
     links: servicesLinks,
     open: true,
   },
   {
     type: "linkGroup",
     href: "/articles",
-    label: "All Articles",
+    label: "Articles",
     links: articlesLinks,
     open: false,
   },
   {
     type: "linkGroup",
     href: "/guides",
-    label: "All Guides",
+    label: "Guides",
     links: guidesLinks,
     open: false,
   },
   {
     type: "linkGroup",
     href: "/recommendations",
-    label: "All Recommendations",
+    label: "Recommendations",
     links: recommendationsLinks,
     open: false,
   },
