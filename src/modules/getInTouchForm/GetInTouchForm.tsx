@@ -15,8 +15,7 @@ export const GetInTouchForm = (p: TGetInTouchFormProps) => {
   const [formData, setFormData] = useState(getInitFormData());
   const [formErrors, setFormErrors] = useState(getInitFormErrors());
 
-  const checkEmailInput = (p?: { value?: string }) => {
-    const value = p?.value ? p.value : formData.email;
+  const checkEmailValue = (value: string) => {
     const schema = z.string().email();
     const parseResponse = schema.safeParse(value);
     if (parseResponse.success) return { success: true } as const;
@@ -24,17 +23,14 @@ export const GetInTouchForm = (p: TGetInTouchFormProps) => {
 
     return { success: false, error: errorMessage } as const;
   };
-
-  const validateEmailInput = (p?: { value?: string }) => {
-    const checkResponse = checkEmailInput(p);
-
+  const validateEmailInput = (value: string) => {
+    const checkResponse = checkEmailValue(value);
     const emailFormError = checkResponse.success ? "" : checkResponse.error;
 
     setFormErrors({ ...formErrors, email: emailFormError });
   };
 
-  const checkDetailsInput = (p?: { value?: string }) => {
-    const value = p?.value ? p.value : formData.details;
+  const checkDetailsValue = (value: string) => {
     const schema = z.string().min(20).max(400);
 
     const parseResponse = schema.safeParse(value);
@@ -44,14 +40,14 @@ export const GetInTouchForm = (p: TGetInTouchFormProps) => {
     return { success: false, error: errorMessage } as const;
   };
 
-  const validateDetailsInput = (p?: { value?: string }) => {
-    const checkResponse = checkDetailsInput(p);
+  const validateDetailsInput = (value: string) => {
+    const checkResponse = checkDetailsValue(value);
     setFormErrors({ ...formErrors, details: checkResponse.success ? "" : checkResponse.error });
   };
 
   const validateFormInputs = () => {
-    const checkEmailResponse = checkEmailInput();
-    const checkDetailsResponse = checkDetailsInput();
+    const checkEmailResponse = checkEmailValue(formData.email);
+    const checkDetailsResponse = checkDetailsValue(formData.details);
 
     setFormErrors({
       email: checkEmailResponse.success ? "" : checkEmailResponse.error,
@@ -71,8 +67,8 @@ export const GetInTouchForm = (p: TGetInTouchFormProps) => {
 
         validateFormInputs();
 
-        const checkEmailResponse = checkEmailInput();
-        const checkDetailsResponse = checkDetailsInput();
+        const checkEmailResponse = checkEmailValue(formData.email);
+        const checkDetailsResponse = checkDetailsValue(formData.details);
         const isError = !checkEmailResponse.success || !checkDetailsResponse.success;
         if (!isError) {
           setShowSubmitSuccessMessage(true);
@@ -122,7 +118,7 @@ export const GetInTouchForm = (p: TGetInTouchFormProps) => {
               const evt = initEvt as unknown as { target: { value: string } };
               const value = evt.target.value;
               setFormData({ ...formData, email: value });
-              validateEmailInput({ value });
+              validateEmailInput(value);
             }}
           />
           <div className="label">
@@ -143,7 +139,7 @@ export const GetInTouchForm = (p: TGetInTouchFormProps) => {
               const evt = initEvt as unknown as { target: { value: string } };
               const value = evt.target.value;
               setFormData((x) => ({ ...x, details: value }));
-              validateDetailsInput({ value });
+              validateDetailsInput(value);
             }}
           />
           <div className="label">
