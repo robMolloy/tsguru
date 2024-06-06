@@ -18,3 +18,5 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TS_GURUS }}
           channelId: live
           projectId: ts-gurus
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks
