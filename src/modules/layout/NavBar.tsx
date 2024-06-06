@@ -71,7 +71,7 @@ export const NavBar = (p: TNavbarProps) => {
 
         <div className="flex-1">
           <Link href="/" className="btn btn-ghost text-xl">
-            TS Gurus
+            TS Gurus - test deploy
           </Link>
         </div>
         <div className="flex gap-4">
